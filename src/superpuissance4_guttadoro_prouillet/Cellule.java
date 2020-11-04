@@ -1,5 +1,5 @@
 /*
- * Guttadoro Rosanna Lorraine Prouillet
+ * Guttadoro Rosanna Lorraine Prouillet 04/11/2020
  * Classe Cellule
  * Statut : finie et commentée
  */
