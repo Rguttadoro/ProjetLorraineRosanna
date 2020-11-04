@@ -26,7 +26,7 @@ public class Grille {
         // au fait que la case ou arrive le jeton est pleine ou non
         for ( int i =5 ; i<=0 ; i-- ) { 
             // On parcours la colonne d'en bas jusqu'en haut donc on part de ligne=5
-            if ( Cellules[i][C]==null) {
+            if ( Cellules[i][C].jetonCourant==null) {
                 //Si cette première cellule est vide, on lui affecte le jeton joué
                 Cellules[i][C].affecterJeton(Valjeton); 
                 return true; //L'action a était faite on renvoie vraie et on sort de la boucle
@@ -158,21 +158,8 @@ public class Grille {
                 }
             }
         }
-        for (int i = 0; i<=6 ; i++) {
-            int sommepions=0;
-            for (int j= 0; j<=5; i++) {
-                if (Cellules[i][i].jetonCourant.lireCouleur()== couleurJoueur) {
-                    sommepions++;
-                } else {
-                    sommepions=0;
-                }
-                if (sommepions==4) {
-                    gagne = true;
-                    return gagne;
-                }
-            }
-        }
-    
+        
+    return true;
     }
 
     
@@ -186,7 +173,7 @@ public class Grille {
                 remplie=true;
                 return remplie;
             }
-        }
+        } return true;
     }
 }
 
