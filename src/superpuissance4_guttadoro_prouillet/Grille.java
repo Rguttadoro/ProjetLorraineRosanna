@@ -11,6 +11,14 @@ package superpuissance4_guttadoro_prouillet;
 public class Grille {
     Cellule[][] Cellules = new Cellule[6][7]; //La grille de jeu est un tableau de 42 cellules
     
+    // ajout constructeur 
+    public Grille() {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                Cellules[i][j] = new Cellule();
+            }
+        }
+    }
     
     public boolean ajouterJetondansColonne ( Jeton Valjeton , int C ) {
         // C désigne la colonne choisie par le joueur 
