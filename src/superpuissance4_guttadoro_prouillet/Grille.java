@@ -24,14 +24,14 @@ public class Grille {
         // C désigne la colonne choisie par le joueur 
         boolean pleine = true; // Initialise la valeur pleine qui correspond 
         // au fait que la case ou arrive le jeton est pleine ou non
-        for ( int i =5 ; i<=0 ; i-- ) { 
-            // On parcours la colonne d'en bas jusqu'en haut donc on part de ligne=5
-            if ( Cellules[i][C].jetonCourant==null) {
+        for ( int i =0 ; i<=5 ; i-- ) { 
+            // On parcours la colonne d'en haut jusqu'en bas
+            if ( Cellules[i][C-1].jetonCourant==null) {
                 //Si cette première cellule est vide, on lui affecte le jeton joué
-                Cellules[i][C].affecterJeton(Valjeton); 
+                Cellules[i][C-1].affecterJeton(Valjeton); 
                 return true; //L'action a était faite on renvoie vraie et on sort de la boucle
             } else {
-                pleine= false; //Si cette cellule n'était pas vide, on reste dans la boucle for et incréménte i
+                pleine= false; //Si cette cellule n'était pas vide, on reste dans la boucle for et décréménte i
             } //Renverra faux à la fin si la colonne est entièrement pleine
         }
         return pleine; 
@@ -93,10 +93,10 @@ public class Grille {
                 } else {
                     //System.out.print( Cellules[i][j].jetonCourant+" " );
                     
-                    if (Cellules[i][j].jetonCourant.lireCouleur() == "rouge"); {
+                    if (Cellules[i][j].jetonCourant.lireCouleur() == "rouge") {
                         System.out.print("R " );      
                     }
-                    if (Cellules[i][j].jetonCourant.lireCouleur() == "jaune"); {
+                    if (Cellules[i][j].jetonCourant.lireCouleur() == "jaune") {
                         System.out.print("J " );
                     }
                     
