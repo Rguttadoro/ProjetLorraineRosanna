@@ -50,7 +50,7 @@ public class Grille {
                     //On sort de la boucle est renvoie faux, elle n'est pas remplie
                 } else { 
                     remplie = true ; 
-                } //Tant qu'on croise aucune cellules vide, on continue d'incrémenter
+                }   //Tant qu'on croise aucune cellules vide, on continue d'incrémenter
                         //A la fin si remplie doit renvoyer vrai.         
             }       
         }
@@ -75,7 +75,7 @@ public class Grille {
     
     public void  afficherGrilleSurConsole ( ) {
         //Affichage des colonnes en haut de la matrice
-        System.out.println("1 2 3 4 5 6");
+        System.out.println("1 2 3 4 5 6 7");
         // Pour l'affichage on parcours le tableau dans le sens inverse des lignes
         for ( int i=5 ; i>= 0 ; i--) {
             //En commencant par la ligne 5, puis 4 ect...
@@ -108,8 +108,85 @@ public class Grille {
                       System.out.print("\n");
                 }
             }
-   
-}
+        }
 }
 
+    public boolean celluleOccupee ( int y , int x  ) { //y pour le numéro de la colonne et x numéro de  la ligne
+        if ( Cellules[y][x] == null ) { //on vérifie sur la cellule de coordonnées passés en paramètres est nulle ( sans jetons)
+            return false;
+        } else {
+            return true;
+        }
+
+    }  
+
+    public String lireCouleurDuJeton (int y ,int x ) { //même principe que pour la méthode du dessus avec les coordonnées    
+        String couleur = Cellules[y][x].jetonCourant.lireCouleur();
+        return couleur;
+
+    }
+    
+    public boolean etreGagnantePourJoueur(Joueur unJoueur) {
+        boolean gagne= false ;
+        String couleurJoueur = unJoueur.couleur;
+        
+        for (int i = 0; i<=6 ; i++) {
+            int sommepions=0;
+            for (int j= 0; j<=5; i++) {
+                if (Cellules[j][i].jetonCourant.lireCouleur()== couleurJoueur) {
+                    sommepions++;
+                } else {
+                    sommepions=0;
+                }
+                if (sommepions==4) {
+                    gagne = true;
+                    return gagne;
+                }
+            }
+        }
+        for (int i = 0; i<=5 ; i++) {
+            int sommepions=0;
+            for (int j= 0; j<=6; i++) {
+                if (Cellules[i][j].jetonCourant.lireCouleur()== couleurJoueur) {
+                    sommepions++;
+                } else {
+                    sommepions=0;
+                }
+                if (sommepions==4) {
+                    gagne = true;
+                    return gagne;
+                }
+            }
+        }
+        for (int i = 0; i<=6 ; i++) {
+            int sommepions=0;
+            for (int j= 0; j<=5; i++) {
+                if (Cellules[i][i].jetonCourant.lireCouleur()== couleurJoueur) {
+                    sommepions++;
+                } else {
+                    sommepions=0;
+                }
+                if (sommepions==4) {
+                    gagne = true;
+                    return gagne;
+                }
+            }
+        }
+    
+    }
+
+    
+    public boolean colonneRemplie() {
+        boolean remplie = false ;
+        for (int i =0; i<=5;i++ ) {
+            if (Cellules[i] == null) {
+               
+                return false;
+            } else {
+                remplie=true;
+                return remplie;
+            }
+        }
+    }
+}
 

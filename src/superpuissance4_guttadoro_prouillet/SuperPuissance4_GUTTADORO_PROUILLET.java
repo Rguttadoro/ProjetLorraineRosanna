@@ -23,6 +23,7 @@ public class SuperPuissance4_GUTTADORO_PROUILLET {
        Lorraine.affecterCouleur("rouge");
        Lorraine.ajouterJeton(unejeton);
        
+       
        Lorraine.obtenirDesintegrateur();
        Lorraine.utiliserDesintegrateurs();
         
