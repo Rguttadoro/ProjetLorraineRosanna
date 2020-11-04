@@ -1,7 +1,7 @@
 /*
  * Guttadoro Rosanna Lorraine Prouillet
  * Classe Cellule
- * Statut : en cours et commentée
+ * Statut : en cours, vérifiée jusqu'à etregagnante et commentée
  */
 package superpuissance4_guttadoro_prouillet;
 
@@ -128,10 +128,10 @@ public class Grille {
     public boolean etreGagnantePourJoueur(Joueur unJoueur) {
         boolean gagnante= false ; //Initialise gagnante comme faux
         String couleurJoueur = unJoueur.couleur;
-        //Analyse d'une colonne:
-        for (int i = 0; i<=6 ; i++) { //On s'intéresse à chaques lignes
+        //Analyse d'une colonnes:
+        for (int i = 0; i<=6 ; i++) { //On s'intéresse à chaques colonnes
             int sommepions=0; //Mais on remets la somme des pions à 0 entre chaque colonnes étudiées
-            for (int j= 0; j<=5; i++) { //On regarde chaque case de la colonne
+            for (int j= 0; j<=5; j++) { //On regarde chaque case de la colonne
                 if (Cellules[j][i].lireCouleurDuJeton() == couleurJoueur) {
                     sommepions++; //Des qu'une case a la bonne couleur on incrémente
                 } else {
@@ -139,20 +139,21 @@ public class Grille {
                 }
                 if (sommepions==4) { //Une fois que la somme atteint 4 la partie est gagnée
                     gagnante = true;
-                    //System.out.println("Gagné"); Test vérifiant le fonctionnement
+                    //System.out.println("Gagné"); //Test vérifiant le fonctionnement
                     return gagnante;
                 }
             }
         } //Analyse des lignes :
         for (int i = 0; i<=5 ; i++) { //On étudie chaque ligne
             int sommepions=0;
-            for (int j= 0; j<=6; i++) { // Et donc on décale d'une colonne a chaque fois
+            for (int j= 0; j<=6; j++) { // Et donc on décale d'une colonne a chaque fois
                 if (Cellules[i][j].lireCouleurDuJeton()== couleurJoueur) {
                     sommepions++;//Meme principe que précédemment
                 } else {
                     sommepions=0;
                 }
                 if (sommepions==4) {
+                    //System.out.println("Gagné bravo"); Test 2
                     gagnante = true;
                     return gagnante;
                 }
