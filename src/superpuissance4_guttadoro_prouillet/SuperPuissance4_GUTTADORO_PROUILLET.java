@@ -30,7 +30,11 @@ public class SuperPuissance4_GUTTADORO_PROUILLET {
        
        Grille unegrille = new Grille();
        unegrille.ajouterJetondansColonne(unejeton, 2);
+       unegrille.ajouterJetondansColonne(unejeton, 2);
+       unegrille.ajouterJetondansColonne(unejeton, 2);
+       unegrille.ajouterJetondansColonne(unejeton, 2);
        unegrille.afficherGrilleSurConsole();
+       unegrille.etreGagnantePourJoueur(Lorraine);
        
        
         

@@ -24,7 +24,7 @@ public class Grille {
         // C désigne la colonne choisie par le joueur 
         boolean pleine = true; // Initialise la valeur pleine qui correspond 
         // au fait que la case ou arrive le jeton est pleine ou non
-        for ( int i =0 ; i<=5 ; i-- ) { 
+        for ( int i =0 ; i<=5 ; i++ ) { 
             // On parcours la colonne d'en haut jusqu'en bas
             if ( Cellules[i][C-1].jetonCourant==null) {
                 //Si cette première cellule est vide, on lui affecte le jeton joué
@@ -91,7 +91,6 @@ public class Grille {
                     System.out.print("D ");
                     // D corresponds a un désintégrateur
                 } else {
-                    //System.out.print( Cellules[i][j].jetonCourant+" " );
                     
                     if (Cellules[i][j].jetonCourant.lireCouleur() == "rouge") {
                         System.out.print("R " );      
@@ -121,44 +120,45 @@ public class Grille {
     }  
 
     public String lireCouleurDuJeton (int y ,int x ) { //même principe que pour la méthode du dessus avec les coordonnées    
-        String couleur = Cellules[y][x].jetonCourant.lireCouleur();
+        String couleur = Cellules[y][x].jetonCourant.lireCouleur(); 
         return couleur;
 
     }
     
     public boolean etreGagnantePourJoueur(Joueur unJoueur) {
-        boolean gagne= false ;
+        boolean gagnante= false ; //Initialise gagnante comme faux
         String couleurJoueur = unJoueur.couleur;
-        
-        for (int i = 0; i<=6 ; i++) {
+        //Analyse d'une colonne:
+        for (int i = 0; i<=6 ; i++) { //On s'intéresse à chaques lignes
+            int sommepions=0; //Mais on remets la somme des pions à 0 entre chaque colonnes étudiées
+            for (int j= 0; j<=5; i++) { //On regarde chaque case de la colonne
+                if (Cellules[j][i].lireCouleurDuJeton() == couleurJoueur) {
+                    sommepions++; //Des qu'une case a la bonne couleur on incrémente
+                } else {
+                    sommepions=0; //Sinon la somme est remise à 0
+                }
+                if (sommepions==4) { //Une fois que la somme atteint 4 la partie est gagnée
+                    gagnante = true;
+                    //System.out.println("Gagné"); Test vérifiant le fonctionnement
+                    return gagnante;
+                }
+            }
+        } //Analyse des lignes :
+        for (int i = 0; i<=5 ; i++) { //On étudie chaque ligne
             int sommepions=0;
-            for (int j= 0; j<=5; i++) {
-                if (Cellules[j][i].jetonCourant.lireCouleur()== couleurJoueur) {
-                    sommepions++;
+            for (int j= 0; j<=6; i++) { // Et donc on décale d'une colonne a chaque fois
+                if (Cellules[i][j].lireCouleurDuJeton()== couleurJoueur) {
+                    sommepions++;//Meme principe que précédemment
                 } else {
                     sommepions=0;
                 }
                 if (sommepions==4) {
-                    gagne = true;
-                    return gagne;
+                    gagnante = true;
+                    return gagnante;
                 }
             }
         }
-        for (int i = 0; i<=5 ; i++) {
-            int sommepions=0;
-            for (int j= 0; j<=6; i++) {
-                if (Cellules[i][j].jetonCourant.lireCouleur()== couleurJoueur) {
-                    sommepions++;
-                } else {
-                    sommepions=0;
-                }
-                if (sommepions==4) {
-                    gagne = true;
-                    return gagne;
-                }
-            }
-        }
-        
+        //Analyse des diagonales:
     return true;
     }
 

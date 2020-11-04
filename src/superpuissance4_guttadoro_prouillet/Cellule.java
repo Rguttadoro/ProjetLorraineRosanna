@@ -86,7 +86,16 @@ public class Cellule { //Attributs de la classe cellule
     }
      
     public String lireCouleurDuJeton () { //Appel de la méthode définie dans jeton
-        return jetonCourant.lireCouleur(); 
+        String couleur;
+        if ( jetonCourant == null) {
+            
+            couleur = "vide"; //Si jamais il n'y a pas de jeton
+        }
+        else { 
+ 
+            couleur =jetonCourant.lireCouleur();
+        }
+        return couleur;
         //On obtient la couleur du jeton courant utilisé
 
     }
