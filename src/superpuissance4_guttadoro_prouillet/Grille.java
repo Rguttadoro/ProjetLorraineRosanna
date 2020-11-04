@@ -80,7 +80,7 @@ public class Grille {
         for ( int i=5 ; i>= 0 ; i--) {
             //En commencant par la ligne 5, puis 4 ect...
             for ( int j=0 ; j<=6 ; j++ ) {
-                
+               
                 if  ( Cellules[i][j].jetonCourant == null ) {
                     System.out.print("V ");
                     //V corresponds à  case vide
@@ -91,28 +91,25 @@ public class Grille {
                     System.out.print("D ");
                     // D corresponds a un désintégrateur
                 } else {
-                    System.out.print( Cellules[i][j].jetonCourant+" " );
+                    //System.out.print( Cellules[i][j].jetonCourant+" " );
                     
+                    if (Cellules[i][j].jetonCourant.lireCouleur() == "rouge"); {
+                        System.out.print("R " );      
+                    }
+                    if (Cellules[i][j].jetonCourant.lireCouleur() == "jaune"); {
+                        System.out.print("J " );
+                    }
                     
-                    //if (Cellules[i][j].jetonCourant.lireCouleur() == "Rouge"); {
-                        //System.out.print("R " );
-                            
-                    }
-                    //if (Cellules[i][j].jetonCourant.lireCouleur() == "Jaune"); {
-                        //System.out.print("J " );
-                    }
+                 
                   // Si c'est aucune des précédentes cases, c'est donc forcément un jeton
                   // jetonCourant est de type jeton et un jeton a pour attribut une couleur
                 } //(On lit sa couleur est affiche R ou J en fonction)
+                if (j==6) {
+                      System.out.print("\n");
+                }
             }
- 
-    
-    
-    
-    
-    
-    
+   
 }
-    
+}
 
 
