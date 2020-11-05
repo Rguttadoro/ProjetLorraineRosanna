@@ -76,7 +76,7 @@ public class Cellule { //Attributs de la classe cellule
         }           
     }
     
-     public boolean presencDesintegrateur () { //Meme fonctionnement
+     public boolean presenceDesintegrateur () { //Meme fonctionnement
         if ( desintegrateur == true ) {
             return true;
             

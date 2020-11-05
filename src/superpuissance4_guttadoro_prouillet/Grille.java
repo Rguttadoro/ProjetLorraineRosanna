@@ -1,7 +1,8 @@
 /*
  * Guttadoro Rosanna Lorraine Prouillet
  * Classe Cellule
- * Statut : en cours, vérifiée jusqu'à etregagnante et commentée
+ * Statut : en cours et commentée
+ * +++ Comment avoir les bons indices pour les fonctions contenant x,y? +Tasser grille
  */
 package superpuissance4_guttadoro_prouillet;
 
@@ -75,7 +76,7 @@ public class Grille {
     
     public void  afficherGrilleSurConsole ( ) {
         //Affichage des colonnes en haut de la matrice
-        System.out.println("1 2 3 4 5 6 7");
+        System.out.println("\n" +"1 2 3 4 5 6 7");
         // Pour l'affichage on parcours le tableau dans le sens inverse des lignes
         for ( int i=5 ; i>= 0 ; i--) {
             //En commencant par la ligne 5, puis 4 ect...
@@ -111,7 +112,7 @@ public class Grille {
 }
 
     public boolean celluleOccupee ( int y , int x  ) { //y pour le numéro de la colonne et x numéro de  la ligne
-        if ( Cellules[y][x] == null ) { //on vérifie sur la cellule de coordonnées passés en paramètres est nulle ( sans jetons)
+        if ( Cellules[y][x].jetonCourant == null ) { //on vérifie sur la cellule de coordonnées passés en paramètres est nulle ( sans jetons)
             return false;
         } else {
             return true;
@@ -160,21 +161,69 @@ public class Grille {
             }
         }
         //Analyse des diagonales:
+        
     return true;
     }
 
     
-    public boolean colonneRemplie() {
-        boolean remplie = false ;
-        for (int i =0; i<=5;i++ ) {
-            if (Cellules[i] == null) {
+    public boolean colonneRemplie(int C) { 
+        boolean remplie = false ; 
+        //Choix d'une colonne à vérifier si remplie
+        for (int i =0; i<=5;i++ ) { //On parcours donc chaque ligne de la colonne
+            if (Cellules[i][C] == null) { //Des qu'une case est vide elle n'est forcément pas remplie
                
                 return false;
             } else {
-                remplie=true;
+                remplie=true; //i arrive à 5, la colonne est bien remplie
                 return remplie;
             }
         } return true;
+    }
+    
+    public boolean supprimerJeton ( int y , int x  ) { //y pour le numéro de la colonne et x numéro de  la ligne
+        //comment accèder aux bons indices?
+        if ( Cellules[y][x].jetonCourant == null ) { //on vérifie sur la cellule de coordonnées passés en paramètres est nulle ( sans jetons)
+            return false; //renvoie faux, rien à supprimer
+        } else {
+            Cellules[y][x].jetonCourant = null; //Sinon, on rends cette cellule vide
+            return true;
+        }
+    } 
+    
+    public Jeton recupereJeton(int x, int y) {
+        Jeton reference= null; //Variable pour le Jeton contenu dans la case
+        Cellules[y][x].jetonCourant = reference ; //On affecte le jeton de la case a cette variable
+        Cellules[y][x].jetonCourant = null; // Vide cette case
+        return reference; //Renvoie ce jeton recupérer
+    }
+    
+    public void tasserGrille() { //Lorsqu'un jeton disparait il faut que la grille se retasse
+        for (int i =0; i<=6;i++) {
+            for (int j=5;i>=1;j++) { //borne 1 car inutile pour la ligne la plus basse de la grille
+                if (Cellules[j-1][i].jetonCourant==null) { 
+                    //Si la case du dessous dans la colonne est vide on descends le jeton d'un cran
+                    Cellules[j-1][i]=Cellules[j][i];
+                } 
+            }
+        }
+    }
+    
+    public boolean placerTrouNoir(int x, int y) {
+        if (Cellules[y][x].placerTrouNoir()) { //Si l'action de placer le trou est faisable
+            return true;//L'action a été faite on renvooe vrai
+           
+        } else {
+            return false; //Faux sinon
+        }
+    }
+    
+    public boolean placerDesintegrateur(int x, int y) { //Meme principe que les trou noirs
+       if (Cellules[y][x].placerDesintegrateur()) { //Si l'action de placer le trou est faisable
+            return true;//L'action a été faite on renvooe vrai
+           
+        } else {
+            return false; //Faux sinon
+        } 
     }
 }
 
