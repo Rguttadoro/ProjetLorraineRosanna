@@ -161,6 +161,34 @@ public class Grille {
             }
         }
         //Analyse des diagonales:
+        for (int i = 0; i<=6 ; i++) { // on fait le test pour les diagonles montantes 
+            int sommepions=0;
+            for (int j= 5; j>=0; j--) {
+                if (Cellules[j][i].jetonCourant.lireCouleur()== Cellules[j-1][i+1].jetonCourant.lireCouleur()) {
+                    sommepions++;
+                } else {
+                    sommepions=0;
+                }
+                if (sommepions==4) {
+                    gagnante = true;
+                    return gagnante;
+                }
+            }
+        }
+        for (int i = 0; i<=6 ; i++) { // on fait le test pour les diagonles descendantes 
+            int sommepions=0;
+            for (int j= 0; j<=5; j++) {
+                if (Cellules[j][i].jetonCourant.lireCouleur()== Cellules[j+1][i+1].jetonCourant.lireCouleur()) {
+                    sommepions++;
+                } else {
+                    sommepions=0;
+                }
+                if (sommepions==4) {
+                    gagnante = true;
+                    return gagnante;
+                }
+            }
+        }
         
     return true;
     }
@@ -209,7 +237,8 @@ public class Grille {
     }
     
     public boolean placerTrouNoir(int x, int y) {
-        if (Cellules[y][x].placerTrouNoir()) { //Si l'action de placer le trou est faisable
+        if (Cellules[y][x].presenceTrouNoir ()== false ) { //Si l'action de placer le trou est faisable
+            Cellules[y][x].placerTrouNoir();
             return true;//L'action a été faite on renvooe vrai
            
         } else {
@@ -218,8 +247,9 @@ public class Grille {
     }
     
     public boolean placerDesintegrateur(int x, int y) { //Meme principe que les trou noirs
-       if (Cellules[y][x].placerDesintegrateur()) { //Si l'action de placer le trou est faisable
-            return true;//L'action a été faite on renvooe vrai
+       if (Cellules[y][x].presenceDesintegrateur ( )== false ) { //Si l'action de placer le trou est faisable
+           Cellules[y][x].placerDesintegrateur();
+           return true;//L'action a été faite on renvoie vrai
            
         } else {
             return false; //Faux sinon
