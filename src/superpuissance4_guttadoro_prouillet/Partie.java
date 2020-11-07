@@ -6,6 +6,7 @@
 package superpuissance4_guttadoro_prouillet;
 
 import java.util.Random; // permet de générer le nombre aléatoire 
+import java.util.Scanner; // permet a l'utilisateur de saisir qqch
 
 /**
  *
@@ -15,6 +16,10 @@ public class Partie {
     Joueur[] ListeJoueurs = new Joueur[2];
     Jeton[] ListeJetons = new Jeton[21];
     Joueur joueurCourant;
+    Grille grillePartie = new Grille(); //on initialise la grille de jeu 
+    
+    
+  
     
     public void  attribuerCouleursAuxJoueurs ( ) {
         // l'atribution de la couleur se fait de manière aléatoire 
@@ -33,6 +38,30 @@ public class Partie {
     }
     
     public void debuterPartie () {
+          
+        // il faut créer les 2 joueurs
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Pseudo Joueur1 : ");
+        Joueur Joueur1 = new  Joueur(sc.nextLine()); // on initialise les joeurs en récupérant ce que l'utilisateur a saisi 
+        ListeJoueurs[0]= Joueur1;
+        System.out.println("Pseudo Joueur2 : ");
+        Joueur Joueur2 = new  Joueur(sc.nextLine());
+        ListeJoueurs[1]= Joueur2;
+        
+        attribuerCouleursAuxJoueurs(); //on appelle la méthode créé précédemment, les joueurs ont maintenant une couleur d'attribuée
+        
+        // on l'affiche pour permettre aux joueurs de connaitre leur couleur 
+        
+        System.out.println(Joueur1.Nom +" a la couleur "+Joueur1.couleur);
+        System.out.println(Joueur2.Nom +" a la couleur "+Joueur2.couleur);
+        
+        
+        
+        // nous avions vu que dans la classe grille, pour chaque nouvelle partie il fallait vider la grille :
+        grillePartie.viderGrille();
+        
+        
+        
         
         
     }
