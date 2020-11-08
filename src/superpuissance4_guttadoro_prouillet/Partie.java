@@ -19,7 +19,8 @@ public class Partie {
     Grille grillePartie = new Grille(); //on initialise la grille de jeu
     Jeton jetonCourant;
     
-    
+
+
       
     public void  attribuerCouleursAuxJoueurs ( ) {
         // l'atribution de la couleur se fait de manière aléatoire 
@@ -57,8 +58,8 @@ public class Partie {
         System.out.println(Joueur2.Nom +" a la couleur "+Joueur2.couleur);
         
         initialiserPartie();
+        //Permets une grille nouvelle
         
-        //Afficher le menu de jeu tant que la partie n'est pas finie
         
         // on détermine qui sera le premier joueur de la meme facon que pour attribuer les couleurs
         Random random = new Random();
@@ -70,18 +71,18 @@ public class Partie {
         }
         
         
-        // on donne des jetons aux joueurs
+        // on donne des jetons aux joueurs de la couleur qu'il faut
         Jeton Jeton1 = new Jeton(Joueur1.couleur);
         Jeton Jeton2 = new Jeton(Joueur2.couleur);
         
-        for ( int i=0 ; i<21 ; i++ ){
-            Joueur1.ajouterJeton(Jeton1);
-            Joueur2.ajouterJeton(Jeton2);
+        for (int i = 0; i<ListeJetons.length; i++) {
+            Joueur1.ListeJetons[i]= Jeton1;
+            Joueur2.ListeJetons[i]= Jeton2;
         }
-        
+           
         do { // demande au joueur de choisir ce qu'il veut faire
             Scanner scs = new Scanner(System.in);
-            System.out.print("Que voulez vous faire ?\\n"+"1) Jouer un jeton\\n"+"2) choix non disponbile \\n"+"3) choix non dispobible");
+            System.out.print("Que voulez vous faire ? \n"+"1) Jouer un jeton \n"+"2) choix non disponbile \n"+"3) choix non dispobible \n");
             int choix = scs.nextInt();
             if  ( choix != 1 ) {
                 System.out.println("saisissez un choix valide");
@@ -89,26 +90,28 @@ public class Partie {
             } else {
                 
                 Scanner sca = new Scanner(System.in);
-                boolean resultAct;
                 System.out.println("Veuillez choisir une colonne ");
                 int colonne = sca.nextInt() ; 
-                while ( colonne > 6 && colonne<1) {
+                while ( colonne > 6 && colonne < 1) {
                     System.out.println(" veuillez saisir une colonne valide ");
                     colonne = sca.nextInt();
                 }
                 
+                jetonCourant = joueurCourant.jetonJoueur;
                 
-                resultAct= grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
-                while  (resultAct != true ) {
+                grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
+                while (grillePartie.ajouterJetondansColonne(jetonCourant , colonne ) == false ) {
                     System.out.println(" la colonne est pleine, saisissez en une autre ");
                     colonne = sca.nextInt();
-                resultAct= grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
-                
+                    grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
                 }
+                grillePartie.afficherGrilleSurConsole();
+                JoueurSuivant(joueurCourant);
             }
             
             
-        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) != true ); // tant que aucun joueur n'a gagné la partie on affiche le menu
+        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) != true ); 
+        // tant que aucun joueur n'a gagné la partie on affiche le menu et on continue les tours de jeu
         
      
     }
@@ -151,7 +154,7 @@ public class Partie {
     }
     
     public Joueur JoueurSuivant ( Joueur leJoueur ) {
-        if ( ListeJoueurs[1]==joueurCourant ){
+        if ( ListeJoueurs[1]== joueurCourant ){
             return ListeJoueurs[0];
             
         }else {

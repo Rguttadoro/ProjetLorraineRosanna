@@ -22,8 +22,8 @@ public class Grille {
     }
     
     public boolean ajouterJetondansColonne ( Jeton Valjeton , int C ) {
-        // C désigne la colonne choisie par le joueur 
-        boolean pleine = true; // Initialise la valeur pleine qui correspond 
+        // C-1 désigne la colonne choisie par le joueur 
+        boolean pleine = false; // Initialise la valeur pleine qui correspond 
         // au fait que la case ou arrive le jeton est pleine ou non
         for ( int i =0 ; i<=5 ; i++ ) { 
             // On parcours la colonne d'en haut jusqu'en bas

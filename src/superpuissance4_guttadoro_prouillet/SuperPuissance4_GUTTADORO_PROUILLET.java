@@ -16,8 +16,8 @@ public class SuperPuissance4_GUTTADORO_PROUILLET {
     public static void main(String[] args) {
        
         //Tests des méthodes:
-       Jeton unejeton = new Jeton("rouge");
-       unejeton.lireCouleur();
+       /**Jeton unejeton = new Jeton("rouge");
+       * unejeton.lireCouleur();
        
        Joueur Lorraine= new Joueur("Lorraine");
        Lorraine.affecterCouleur("rouge");
@@ -47,10 +47,10 @@ public class SuperPuissance4_GUTTADORO_PROUILLET {
        unegrille.tasserGrille(0);
        unegrille.afficherGrilleSurConsole();
        
-       //Partie unepartie = new Partie();
-       //unepartie.initialiserPartie();
+       */
        
-        
+       Partie unepartie = new Partie();
+       unepartie.debuterPartie();
         
     }
     
