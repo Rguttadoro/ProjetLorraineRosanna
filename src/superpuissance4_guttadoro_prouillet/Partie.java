@@ -63,9 +63,9 @@ public class Partie {
         Random random = new Random();
         boolean premier_joueur = random.nextBoolean();
         if ( premier_joueur==true ) {
-            joueurCourant=Joueur1;
+            joueurCourant=ListeJoueurs[0];
         } else {
-            joueurCourant = Joueur2;
+            joueurCourant = ListeJoueurs[1];
         }
         
         
@@ -78,17 +78,29 @@ public class Partie {
             Joueur2.ajouterJeton(Jeton2);
         }
         
-        do {
+        do { // demande au joueur de choisir ce qu'il veut faire
             Scanner scs = new Scanner(System.in);
             System.out.print("Que voulez vous faire ?\\n"+"1) Jouer un jeton\\n"+"2) choix non disponbile \\n"+"3) choix non dispobible");
             int choix = scs.nextInt();
-            while ( choix != 1 ) {
+            if  ( choix != 1 ) {
                 System.out.println("saisissez un choix valide");
                 choix = scs.nextInt();
+            } else {
+                
+                Scanner sca = new Scanner(System.in);
+                boolean resultAct;
+                System.out.println("Veuillez choisir une colonne ");
+                int colonne = sca.nextInt() -1; // on met le -1 car le chiffre de la colone ne correspond pas à l'indice puisque le tableau est initialisé à 0
+                while ( colonne > 6 && colonne<1) {
+                    System.out.println(" veuillez saisir une colonne valide ");
+                    colonne = sca.nextInt()-1;
+                }
+                resultAct= grillePartie.ajouterJetondansColonne(joueurCourant , colonne );
+                
             }
             
             
-        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) != true );
+        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) != true ); // tant que aucun joueur n'a gagné la partie on affiche le menu
         
      
     }
