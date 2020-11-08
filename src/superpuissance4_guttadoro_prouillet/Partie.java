@@ -73,7 +73,7 @@ public class Partie {
             //génére un tableau de 4 entiers aléatoire
             Random a = new Random();
             positionsTrounoir[i] = a.nextInt(6);
-            System.out.print(positionsTrounoir[i]); 
+            //System.out.print(positionsTrounoir[i]); 
             }
         
         for (int j = 0; j<2; j++) { //crée 3 différents Trous noirs
@@ -85,7 +85,7 @@ public class Partie {
             //génére un tableau de 4 entiers aléatoire
             Random a = new Random();
             positionsDesing[i] = a.nextInt(6);
-            System.out.print(positionsDesing[i]); 
+            //System.out.print(positionsDesing[i]); 
             }
         
         for (int j = 0; j<2; j++) { //crée 3 différents désintégrateurs sur la grille

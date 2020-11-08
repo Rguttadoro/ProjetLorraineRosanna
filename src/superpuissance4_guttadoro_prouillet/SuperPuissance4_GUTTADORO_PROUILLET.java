@@ -33,15 +33,19 @@ public class SuperPuissance4_GUTTADORO_PROUILLET {
        unegrille.ajouterJetondansColonne(unejeton, 1);
        unegrille.ajouterJetondansColonne(unejeton, 1);
        unegrille.ajouterJetondansColonne(unejeton, 1);
-       unegrille.afficherGrilleSurConsole();
+       unegrille.ajouterJetondansColonne(unejeton, 2);
+       unegrille.ajouterJetondansColonne(unejeton, 2);
+       unegrille.ajouterJetondansColonne(unejeton, 2);
+       unegrille.ajouterJetondansColonne(unejeton, 2);
+       //unegrille.afficherGrilleSurConsole();
        //unegrille.etreGagnantePourJoueur(Lorraine);
        //unegrille.viderGrille();
-       //unegrille.placerTrouNoir(2,4);
+       unegrille.placerDesintegrateur(2,4);
        
-       unegrille.supprimerJeton(2,0);
+       //unegrille.supprimerJeton(2,0);
        unegrille.afficherGrilleSurConsole();
-       unegrille.tasserGrille();
-       unegrille.afficherGrilleSurConsole();
+       //unegrille.tasserGrille();
+       //unegrille.afficherGrilleSurConsole();
        
        //Partie unepartie = new Partie();
        //unepartie.initialiserPartie();

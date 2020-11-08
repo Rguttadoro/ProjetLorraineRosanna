@@ -71,7 +71,7 @@ public class Cellule { //Attributs de la classe cellule
         if ( trouNoir == true ) { // Si trou noir est vrai, il est présent
             return true; // Méthode renvoie vrai
             
-        }else {
+        } else {
             return false;
         }           
     }

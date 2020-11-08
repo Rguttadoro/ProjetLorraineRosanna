@@ -85,10 +85,10 @@ public class Grille {
                 if  ( Cellules[i][j].jetonCourant == null ) {
                     System.out.print("V ");
                     //V corresponds à  case vide
-                } else if ( Cellules[i][j].presenceTrouNoir()) {
+                } else if ( Cellules[i][j].trouNoir == true) {
                     System.out.print("T ");
                     // T corresponds à un trou noir
-                }else if ( Cellules[i][j].presenceDesintegrateur()) {
+                }else if ( Cellules[i][j].desintegrateur == true) {
                     System.out.print("D ");
                     // D corresponds a un désintégrateur
                 } else {
@@ -226,14 +226,14 @@ public class Grille {
     }
     
     public void tasserGrille() { //Lorsqu'un jeton disparait il faut que la grille se retasse
-        for (int i =0; i<=6;i++) {
-            for (int j=0;i<=4;j++) { //borne 4 car inutile pour la ligne la plus basse de la grille
-                if (Cellules[j][i].jetonCourant!=null) { 
-                    if (Cellules[j+1][i].jetonCourant==null) { 
+        for (int i =0; i<6;i++) {
+            for (int j=0;j<=4;j++) { //borne 4 car inutile pour la ligne la plus basse de la grille
+                if (Cellules[j][i].jetonCourant!=null && Cellules[j+1][i].jetonCourant==null) { 
+                    
                     //Si la case du dessous dans la colonne est vide on descends le jeton d'un cran
                         Cellules[j+1][i].jetonCourant=Cellules[j][i].jetonCourant;
-                   
-                    }
+                        Cellules[j][i].jetonCourant=null; //et on vide la case supérieure
+                    
                 } 
             }
         }
@@ -241,7 +241,7 @@ public class Grille {
     
     public boolean placerTrouNoir(int x, int y) {
         if (Cellules[y][x].presenceTrouNoir ()== false ) { //Si l'action de placer le trou est faisable
-            Cellules[y][x].placerTrouNoir();
+            Cellules[y][x].trouNoir = true;
             return true;//L'action a été faite on renvooe vrai
            
         } else {
@@ -250,8 +250,8 @@ public class Grille {
     }
     
     public boolean placerDesintegrateur(int x, int y) { //Meme principe que les trou noirs
-       if (Cellules[y][x].presenceDesintegrateur() == false ) { //Si l'action de placer le trou est faisable
-           Cellules[y][x].placerDesintegrateur();
+       if (Cellules[y][x].desintegrateur == false) { //Si l'action de placer le trou est faisable
+           Cellules[y][x].desintegrateur= true;
            return true;//L'action a été faite on renvoie vrai
            
         } else {
