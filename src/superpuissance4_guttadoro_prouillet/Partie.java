@@ -96,5 +96,7 @@ public class Partie {
         } 
         grillePartie.afficherGrilleSurConsole();
         //Affiche la grille de jeu prête pour le début de la partie.
+        
+        
     }
 }

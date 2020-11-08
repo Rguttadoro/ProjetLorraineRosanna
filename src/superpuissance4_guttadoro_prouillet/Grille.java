@@ -227,10 +227,13 @@ public class Grille {
     
     public void tasserGrille() { //Lorsqu'un jeton disparait il faut que la grille se retasse
         for (int i =0; i<=6;i++) {
-            for (int j=5;i>=1;j++) { //borne 1 car inutile pour la ligne la plus basse de la grille
-                if (Cellules[j-1][i].jetonCourant==null) { 
+            for (int j=0;i<=4;j++) { //borne 4 car inutile pour la ligne la plus basse de la grille
+                if (Cellules[j][i].jetonCourant!=null) { 
+                    if (Cellules[j+1][i].jetonCourant==null) { 
                     //Si la case du dessous dans la colonne est vide on descends le jeton d'un cran
-                    Cellules[j-1][i]=Cellules[j][i];
+                        Cellules[j+1][i].jetonCourant=Cellules[j][i].jetonCourant;
+                   
+                    }
                 } 
             }
         }
@@ -247,12 +250,12 @@ public class Grille {
     }
     
     public boolean placerDesintegrateur(int x, int y) { //Meme principe que les trou noirs
-       if (Cellules[y][x].presenceDesintegrateur ( )== false ) { //Si l'action de placer le trou est faisable
+       if (Cellules[y][x].presenceDesintegrateur() == false ) { //Si l'action de placer le trou est faisable
            Cellules[y][x].placerDesintegrateur();
            return true;//L'action a été faite on renvoie vrai
            
         } else {
-            return false; //Faux sinon
+           return false; //Faux sinon
         } 
     }
 }
