@@ -1,8 +1,8 @@
 /*
  * Guttadoro Rosanna Lorraine Prouillet
  * Classe Cellule
- * Statut : en cours et commentée
- * +++ Comment avoir les bons indices pour les fonctions contenant x,y? +Tasser grille
+ * Statut : terminée
+ * 
  */
 package superpuissance4_guttadoro_prouillet;
 
@@ -145,7 +145,7 @@ public class Grille {
                     //System.out.println("Gagné"); //Test vérifiant le fonctionnement
                     return gagnante;
                 }
-            }
+            } return false;
         } //Analyse des lignes :
         for (int i = 0; i<=5 ; i++) { //On étudie chaque ligne
             int sommepions=0;
@@ -160,7 +160,9 @@ public class Grille {
                     gagnante = true;
                     return gagnante;
                 }
-            }
+                    
+                
+            } return false;
         }
         //Analyse des diagonales:
         for (int i = 0; i<=6 ; i++) { // on fait le test pour les diagonles montantes 
@@ -175,7 +177,7 @@ public class Grille {
                     gagnante = true;
                     return gagnante;
                 }
-            }
+            }return false;
         }
         for (int i = 0; i<=6 ; i++) { // on fait le test pour les diagonles descendantes 
             int sommepions=0;
@@ -190,9 +192,8 @@ public class Grille {
                     return gagnante;
                 }
             }
-        }
+        } return false;
         
-    return true;
     }
 
     

@@ -16,38 +16,47 @@ public class SuperPuissance4_GUTTADORO_PROUILLET {
     public static void main(String[] args) {
        
         //Tests des méthodes:
-       /**Jeton unejeton = new Jeton("rouge");
-       * unejeton.lireCouleur();
+       /*Jeton unejeton = new Jeton("rouge");
+        unejeton.lireCouleur();
        
        Joueur Lorraine= new Joueur("Lorraine");
        Lorraine.affecterCouleur("rouge");
        Lorraine.ajouterJeton(unejeton);
        
        
-       Lorraine.obtenirDesintegrateur();
-       Lorraine.utiliserDesintegrateurs();
+       //Lorraine.obtenirDesintegrateur();
+       //Lorraine.utiliserDesintegrateurs();
         
        
        Grille unegrille = new Grille();
        unegrille.ajouterJetondansColonne(unejeton, 1);
        unegrille.ajouterJetondansColonne(unejeton, 1);
+       
        unegrille.ajouterJetondansColonne(unejeton, 1);
-       unegrille.ajouterJetondansColonne(unejeton, 1);
-       unegrille.ajouterJetondansColonne(unejeton, 2);
-       unegrille.ajouterJetondansColonne(unejeton, 2);
-       unegrille.ajouterJetondansColonne(unejeton, 2);
-       unegrille.ajouterJetondansColonne(unejeton, 2);
-       //unegrille.afficherGrilleSurConsole();
-       //unegrille.etreGagnantePourJoueur(Lorraine);
+       
+       unegrille.afficherGrilleSurConsole();
+       if (unegrille.etreGagnantePourJoueur(Lorraine) != true) {
+           System.out.println("Essaye encore");
+           //unegrille.ajouterJetondansColonne(unejeton, 1);
+           //unegrille.ajouterJetondansColonne(unejeton, 1);
+           unegrille.afficherGrilleSurConsole();
+       }
+       //unegrille.ajouterJetondansColonne(unejeton, 1);
+       if (unegrille.etreGagnantePourJoueur(Lorraine) == true) {
+           System.out.println("Gagné");
+       }
        //unegrille.viderGrille();
-       unegrille.placerDesintegrateur(2,4);
+       //unegrille.placerDesintegrateur(2,4);
        
-       unegrille.supprimerJeton(2,0);
-       unegrille.afficherGrilleSurConsole();
-       unegrille.tasserGrille(0);
-       unegrille.afficherGrilleSurConsole();
+       //unegrille.supprimerJeton(2,0);
+       //unegrille.afficherGrilleSurConsole();
+       //unegrille.tasserGrille(0);
+       //unegrille.afficherGrilleSurConsole();
        
-       */
+       
+       
+       //Débuter une réelle partie :
+*/
        
        Partie unepartie = new Partie();
        unepartie.debuterPartie();

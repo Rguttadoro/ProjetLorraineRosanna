@@ -76,8 +76,10 @@ public class Partie {
         Jeton Jeton2 = new Jeton(Joueur2.couleur);
         
         
+        
            
         do { // demande au joueur de choisir ce qu'il veut faire
+           
             Scanner scs = new Scanner(System.in);
             System.out.print("\nC'est le tour de "+ joueurCourant.Nom +"\n");
             System.out.print("Que voulez vous faire ? \n"+"1) Jouer un jeton \n"+"2) choix non disponbile \n"+"3) choix non dispobible \n");
@@ -110,14 +112,11 @@ public class Partie {
                 joueurCourant = JoueurSuivant(joueurCourant);
             }
             
-            
-        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) != true   ); // tant que aucun joueur n'a gagné la partie on affiche le menu et on continue les tours de jeu
-        
+        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) == false ); 
+// tant que aucun joueur n'a gagné la partie on affiche le menu et on continue les tours de jeu
         if (grillePartie.etreGagnantePourJoueur(joueurCourant) == true) {
             System.out.println("Gagné pour le joueur "+ joueurCourant.Nom);
-        }
-        
-        // on affiche le nom de la gagnante 
+        }   // on affiche le nom de la gagnante lorsqu'un des joueur a aligné 4 pions
      
     }
     
