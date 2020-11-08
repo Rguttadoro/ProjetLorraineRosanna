@@ -85,10 +85,10 @@ public class Grille {
                 if  ( Cellules[i][j].jetonCourant == null ) {
                     System.out.print("V ");
                     //V corresponds à  case vide
-                } else if ( Cellules[i][j].trouNoir) {
+                } else if ( Cellules[i][j].presenceTrouNoir()) {
                     System.out.print("T ");
                     // T corresponds à un trou noir
-                }else if ( Cellules[i][j].desintegrateur) {
+                }else if ( Cellules[i][j].presenceDesintegrateur()) {
                     System.out.print("D ");
                     // D corresponds a un désintégrateur
                 } else {
