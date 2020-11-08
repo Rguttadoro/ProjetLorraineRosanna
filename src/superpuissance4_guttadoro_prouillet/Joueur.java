@@ -22,9 +22,9 @@ public class Joueur { //Définition des attributs de joueur
         nombreJetons_restants= 21; //Initialisé donc à 21 en début de partie
         nombreDesintegrateurs=0;
         
-        //for (int i = 0; i<ListeJetons.length; i++) {
-            //ListeJetons[i]= jetonJoueur ;
-        //}
+        for (int i = 0; i<ListeJetons.length; i++) {
+            ListeJetons[i]= jetonJoueur ;
+        }
          
 }
     public void affecterCouleur(String ValCouleur) {

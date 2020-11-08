@@ -75,10 +75,7 @@ public class Partie {
         Jeton Jeton1 = new Jeton(Joueur1.couleur);
         Jeton Jeton2 = new Jeton(Joueur2.couleur);
         
-        for (int i = 0; i<ListeJetons.length; i++) {
-            Joueur1.ListeJetons[i]= Jeton1;
-            Joueur2.ListeJetons[i]= Jeton2;
-        }
+        
            
         do { // demande au joueur de choisir ce qu'il veut faire
             Scanner scs = new Scanner(System.in);
