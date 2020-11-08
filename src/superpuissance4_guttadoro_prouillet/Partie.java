@@ -16,9 +16,9 @@ public class Partie {
     Joueur[] ListeJoueurs = new Joueur[2];
     Jeton[] ListeJetons = new Jeton[21];
     Joueur joueurCourant;
-   
     
     
+      
     public void  attribuerCouleursAuxJoueurs ( ) {
         // l'atribution de la couleur se fait de manière aléatoire 
         Random rand = new Random(); // on créé une variable aléatoire 
@@ -58,6 +58,15 @@ public class Partie {
         
         //Afficher le menu de jeu tant que la partie n'est pas finie
         
+        // on donne des jetons aux joueurs
+        Jeton Jeton1 = new Jeton(Joueur1.couleur);
+        Jeton Jeton2 = new Jeton(Joueur2.couleur);
+        
+        for ( int i=0 ; i<21 ; i++ ){
+            Joueur1.ajouterJeton(Jeton1);
+            Joueur2.ajouterJeton(Jeton2);
+        }
+              
      
     }
     
