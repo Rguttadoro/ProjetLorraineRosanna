@@ -111,13 +111,13 @@ public class Partie {
             }
             
             
-        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) == true ); 
+        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) != true   ); // tant que aucun joueur n'a gagné la partie on affiche le menu et on continue les tours de jeu
         
-        if (grillePartie.etreGagnantePourJoueur(joueurCourant) != true) {
+        if (grillePartie.etreGagnantePourJoueur(joueurCourant) == true) {
             System.out.println("Gagné pour le joueur "+ joueurCourant.Nom);
         }
-        // tant que aucun joueur n'a gagné la partie on affiche le menu et on continue les tours de jeu
         
+        // on affiche le nom de la gagnante 
      
     }
     
