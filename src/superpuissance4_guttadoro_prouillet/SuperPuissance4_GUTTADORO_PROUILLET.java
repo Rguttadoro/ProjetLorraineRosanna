@@ -42,10 +42,10 @@ public class SuperPuissance4_GUTTADORO_PROUILLET {
        //unegrille.viderGrille();
        unegrille.placerDesintegrateur(2,4);
        
-       //unegrille.supprimerJeton(2,0);
+       unegrille.supprimerJeton(2,0);
        unegrille.afficherGrilleSurConsole();
-       //unegrille.tasserGrille();
-       //unegrille.afficherGrilleSurConsole();
+       unegrille.tasserGrille(0);
+       unegrille.afficherGrilleSurConsole();
        
        //Partie unepartie = new Partie();
        //unepartie.initialiserPartie();

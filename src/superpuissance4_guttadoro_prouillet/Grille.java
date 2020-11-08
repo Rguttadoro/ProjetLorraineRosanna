@@ -227,18 +227,15 @@ public class Grille {
         return reference; //Renvoie ce jeton recupérer
     }
     
-    public void tasserGrille() { //Lorsqu'un jeton disparait il faut que la grille se retasse
-        for (int i =0; i<6;i++) {
-            for (int j=0;j<=4;j++) { //borne 4 car inutile pour la ligne la plus basse de la grille
-                if (Cellules[j][i].jetonCourant!=null && Cellules[j+1][i].jetonCourant==null) { 
-                    
-                    //Si la case du dessous dans la colonne est vide on descends le jeton d'un cran
-                        Cellules[j+1][i].jetonCourant=Cellules[j][i].jetonCourant;
-                        Cellules[j][i].jetonCourant=null; //et on vide la case supérieure
-                    
-                } 
-            }
-        }
+    public void tasserGrille(int C) { //Lorsqu'un jeton disparait il faut que la grille se retasse
+        for (int j=5;j>=1;j--) {  //Parcours la colonne en descendant
+            if (Cellules[j][C].jetonCourant != null && Cellules[j-1][C].jetonCourant== null ) { 
+                //Si on a un jeton et que la case en dessous est vide :
+                Cellules[j-1][C].jetonCourant = Cellules[j][C].jetonCourant; //On le remplace en dessous
+                Cellules[j][C].jetonCourant = null; // Et supprime son ancienne postition
+            } 
+        }      
+         
     }
     
     public boolean placerTrouNoir(int x, int y) {
