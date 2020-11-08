@@ -16,10 +16,8 @@ public class Partie {
     Joueur[] ListeJoueurs = new Joueur[2];
     Jeton[] ListeJetons = new Jeton[21];
     Joueur joueurCourant;
-     
+   
     
-    
-  
     
     public void  attribuerCouleursAuxJoueurs ( ) {
         // l'atribution de la couleur se fait de manière aléatoire 
@@ -99,4 +97,14 @@ public class Partie {
         
         
     }
+    
+    public Joueur JoueurSuivant ( Joueur leJoueur ) {
+        if ( ListeJoueurs[1]==joueurCourant ){
+            return ListeJoueurs[0];
+            
+        }else {
+           return ListeJoueurs[1];
+        }    
+    }
+    
 }
