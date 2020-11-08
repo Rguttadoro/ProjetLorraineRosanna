@@ -1,7 +1,7 @@
 /*
  * Guttadoro Rosanna Lorraine Prouillet
  * Classe Partie
- * Statut : en cours
+ * Statut : terminée version 1.1
  */
 package superpuissance4_guttadoro_prouillet;
 
@@ -87,36 +87,45 @@ public class Partie {
             if  ( choix != 1 ) {
                 System.out.println("saisissez un choix valide");
                 choix = scs.nextInt();
+                //Nous n'avons pas développer les fonctions récupérer jetons et les désintégrateurs
+                //Ces choix sont donc indisponible mais ils existent sur la grille de jeu
             } else {
                 
                 Scanner sca = new Scanner(System.in);
                 System.out.println("Veuillez choisir une colonne ");
-                int colonne = sca.nextInt() ; 
+                int colonne = sca.nextInt() ;  //Le joueur choisi sa colonne de jeu
                 while ( colonne > 6 && colonne < 1) {
                     System.out.println(" veuillez saisir une colonne valide ");
-                    colonne = sca.nextInt();
+                    colonne = sca.nextInt(); //Si jamais il donne une mauavaise colonne
                 }
-                if (joueurCourant == Joueur1) {
+                if (joueurCourant == Joueur1) { 
+                //Définir le jeton a ajouté , s'il appartient au joueur 1 ou 2 pour qu'il ai la bonne couleur
                     jetonCourant = Jeton1;
                 } else {
                     jetonCourant = Jeton2;
                 }
                 
-                //grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
+                //On ajoute alors le jeton dans la colonne voulue
                 while (grillePartie.ajouterJetondansColonne(jetonCourant , colonne ) == false ) {
                     System.out.println(" la colonne est pleine, saisissez en une autre ");
+                    //Si jamais cette colonne est remplie, on demande de changer
                     colonne = sca.nextInt();
                     grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
                 }
-                grillePartie.afficherGrilleSurConsole();
+                grillePartie.afficherGrilleSurConsole(); //On affiche aprés avoir effectué l'action
                 joueurCourant = JoueurSuivant(joueurCourant);
-            }
+            } //Enfin on change de joueur et recommence ce déroulement
             
         } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) == false ); 
 // tant que aucun joueur n'a gagné la partie on affiche le menu et on continue les tours de jeu
-        if (grillePartie.etreGagnantePourJoueur(joueurCourant) == true) {
-            System.out.println("Gagné pour le joueur "+ joueurCourant.Nom);
-        }   // on affiche le nom de la gagnante lorsqu'un des joueur a aligné 4 pions
+        if (grillePartie.etreGagnantePourJoueur(joueurCourant) == true || grillePartie.etreRemplie()) {
+            System.out.println("Fin de la partie"); //Si la grille est remplie il est temps d'arreter
+            if (grillePartie.etreGagnantePourJoueur(joueurCourant) == true) {
+                System.out.println("Gagné pour le joueur "+ joueurCourant.Nom);
+              // on affiche le nom de la gagnante lorsqu'un des joueur a aligné 4 pions
+            }
+            
+        }   
      
     }
     
@@ -158,7 +167,7 @@ public class Partie {
     }
     
     public Joueur JoueurSuivant ( Joueur leJoueur ) {
-        if ( ListeJoueurs[1]== joueurCourant ){
+        if ( ListeJoueurs[1]== joueurCourant ){ //Alterne le role de joueur courant à chaque fois que la méthode est appelée
             return ListeJoueurs[0];
             
         }else {
