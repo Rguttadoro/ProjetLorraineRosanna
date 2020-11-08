@@ -91,13 +91,20 @@ public class Partie {
                 Scanner sca = new Scanner(System.in);
                 boolean resultAct;
                 System.out.println("Veuillez choisir une colonne ");
-                int colonne = sca.nextInt() -1; // on met le -1 car le chiffre de la colone ne correspond pas à l'indice puisque le tableau est initialisé à 0
+                int colonne = sca.nextInt() ; 
                 while ( colonne > 6 && colonne<1) {
                     System.out.println(" veuillez saisir une colonne valide ");
-                    colonne = sca.nextInt()-1;
+                    colonne = sca.nextInt();
                 }
+                
+                
                 resultAct= grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
-                while resultAct
+                while  (resultAct != true ) {
+                    System.out.println(" la colonne est pleine, saisissez en une autre ");
+                    colonne = sca.nextInt();
+                resultAct= grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
+                
+                }
             }
             
             
