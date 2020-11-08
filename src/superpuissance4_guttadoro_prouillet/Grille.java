@@ -165,7 +165,7 @@ public class Grille {
         //Analyse des diagonales:
         for (int i = 0; i<=6 ; i++) { // on fait le test pour les diagonles montantes 
             int sommepions=0;
-            for (int j= 5; j>=0; j--) {
+            for (int j= 5; j>0; j--) {
                 if (Cellules[j][i].lireCouleurDuJeton()== Cellules[j-1][i+1].lireCouleurDuJeton()) {
                     sommepions++;
                 } else {
