@@ -58,6 +58,16 @@ public class Partie {
         
         //Afficher le menu de jeu tant que la partie n'est pas finie
         
+        // on détermine qui sera le premier joueur de la meme facon que pour attribuer les couleurs
+        Random random = new Random();
+        boolean premier_joueur = random.nextBoolean();
+        if ( premier_joueur==true ) {
+            joueurCourant=Joueur1;
+        } else {
+            joueurCourant = Joueur2;
+        }
+        
+        
         // on donne des jetons aux joueurs
         Jeton Jeton1 = new Jeton(Joueur1.couleur);
         Jeton Jeton2 = new Jeton(Joueur2.couleur);
@@ -66,7 +76,8 @@ public class Partie {
             Joueur1.ajouterJeton(Jeton1);
             Joueur2.ajouterJeton(Jeton2);
         }
-              
+        
+        
      
     }
     
