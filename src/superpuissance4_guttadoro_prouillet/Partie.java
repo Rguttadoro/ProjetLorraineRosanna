@@ -16,6 +16,7 @@ public class Partie {
     Joueur[] ListeJoueurs = new Joueur[2];
     Jeton[] ListeJetons = new Jeton[21];
     Joueur joueurCourant;
+    Grille grillePartie = new Grille(); //on initialise la grille de jeu
     
     
       
@@ -77,13 +78,24 @@ public class Partie {
             Joueur2.ajouterJeton(Jeton2);
         }
         
+        do {
+            Scanner scs = new Scanner(System.in);
+            System.out.print("Que voulez vous faire ?\\n"+"1) Jouer un jeton\\n"+"2) choix non disponbile \\n"+"3) choix non dispobible");
+            int choix = scs.nextInt();
+            while ( choix != 1 ) {
+                System.out.println("saisissez un choix valide");
+                choix = scs.nextInt();
+            }
+            
+            
+        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) != true );
         
      
     }
     
     public void initialiserPartie() {
         //initialisation de la grille
-        Grille grillePartie = new Grille(); //on initialise la grille de jeu
+        
         // nous avions vu que dans la classe grille, pour chaque nouvelle partie il fallait vider la grille :
         grillePartie.viderGrille();
         
