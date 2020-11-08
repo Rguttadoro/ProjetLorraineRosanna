@@ -17,6 +17,7 @@ public class Partie {
     Jeton[] ListeJetons = new Jeton[21];
     Joueur joueurCourant;
     Grille grillePartie = new Grille(); //on initialise la grille de jeu
+    Jeton jetonCourant;
     
     
       
@@ -95,8 +96,8 @@ public class Partie {
                     System.out.println(" veuillez saisir une colonne valide ");
                     colonne = sca.nextInt()-1;
                 }
-                resultAct= grillePartie.ajouterJetondansColonne(joueurCourant , colonne );
-                
+                resultAct= grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
+                while resultAct
             }
             
             
