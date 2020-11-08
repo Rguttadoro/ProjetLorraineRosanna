@@ -83,14 +83,16 @@ public class Grille {
             for ( int j=0 ; j<=6 ; j++ ) {
                
                 if  ( Cellules[i][j].jetonCourant == null ) {
-                    System.out.print("V ");
-                    //V corresponds à  case vide
-                } else if ( Cellules[i][j].trouNoir == true) {
-                    System.out.print("T ");
+                    if ( Cellules[i][j].trouNoir == true) {
+                        System.out.print("T ");
                     // T corresponds à un trou noir
-                }else if ( Cellules[i][j].desintegrateur == true) {
-                    System.out.print("D ");
+                    }else if ( Cellules[i][j].desintegrateur == true) {
+                        System.out.print("D ");
                     // D corresponds a un désintégrateur
+                    } else {
+                        System.out.print("V ");
+                    //V corresponds à  case vide
+                    }
                 } else {
                     
                     if (Cellules[i][j].jetonCourant.lireCouleur() == "rouge") {
