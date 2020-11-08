@@ -79,6 +79,7 @@ public class Partie {
            
         do { // demande au joueur de choisir ce qu'il veut faire
             Scanner scs = new Scanner(System.in);
+            System.out.print("\nC'est le tour de "+ joueurCourant.Nom +"\n");
             System.out.print("Que voulez vous faire ? \n"+"1) Jouer un jeton \n"+"2) choix non disponbile \n"+"3) choix non dispobible \n");
             int choix = scs.nextInt();
             if  ( choix != 1 ) {
@@ -99,19 +100,22 @@ public class Partie {
                     jetonCourant = Jeton2;
                 }
                 
-                
-                grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
+                //grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
                 while (grillePartie.ajouterJetondansColonne(jetonCourant , colonne ) == false ) {
                     System.out.println(" la colonne est pleine, saisissez en une autre ");
                     colonne = sca.nextInt();
                     grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
                 }
                 grillePartie.afficherGrilleSurConsole();
-                JoueurSuivant(joueurCourant);
+                joueurCourant = JoueurSuivant(joueurCourant);
             }
             
             
-        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) != true ); 
+        } while ( grillePartie.etreGagnantePourJoueur(joueurCourant) == true ); 
+        
+        if (grillePartie.etreGagnantePourJoueur(joueurCourant) != true) {
+            System.out.println("Gagné pour le joueur "+ joueurCourant.Nom);
+        }
         // tant que aucun joueur n'a gagné la partie on affiche le menu et on continue les tours de jeu
         
      
