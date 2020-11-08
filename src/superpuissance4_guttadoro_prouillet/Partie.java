@@ -93,8 +93,12 @@ public class Partie {
                     System.out.println(" veuillez saisir une colonne valide ");
                     colonne = sca.nextInt();
                 }
+                if (joueurCourant == Joueur1) {
+                    jetonCourant = Jeton1;
+                } else {
+                    jetonCourant = Jeton2;
+                }
                 
-                jetonCourant = joueurCourant.jetonJoueur;
                 
                 grillePartie.ajouterJetondansColonne(jetonCourant , colonne );
                 while (grillePartie.ajouterJetondansColonne(jetonCourant , colonne ) == false ) {
