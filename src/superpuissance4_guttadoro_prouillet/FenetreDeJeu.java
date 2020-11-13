@@ -10,12 +10,26 @@ package superpuissance4_guttadoro_prouillet;
  * @author Rosanna Guttadoro
  */
 public class FenetreDeJeu extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FenetreDeJeu
-     */
+    
+    
+    Joueur[] ListeJoueurs = new Joueur[2];
+    Jeton[] ListeJetons = new Jeton[21];
+    Joueur joueurCourant;
+    Grille grillePartie = new Grille(); //on initialise la grille de jeu
+    Jeton jetonCourant;
+    
     public FenetreDeJeu() {
         initComponents();
+        panneauInfosPartie.setVisible(false);
+        panneauCreationPartie.setVisible(false);
+        
+        for ( int i=5 ; i >=0 ; i-- ) {
+            for ( int j=0 ; j <7 ; j++ ) {
+                CelluleGraphique cellGraph = new CelluleGraphique(grillePartie.Cellules[i][j]);
+                panneauGrille.add(cellGraph);
+            }
+        }
+        
     }
 
     /**
@@ -28,7 +42,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private void initComponents() {
 
         panneauGrille = new javax.swing.JPanel();
-        panneauInfoJoueurs = new javax.swing.JPanel();
+        panneauInfosJoueurs = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Nom_Joueur2 = new javax.swing.JTextField();
@@ -66,18 +80,18 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panneauGrille.setBackground(new java.awt.Color(0, 102, 204));
+        panneauGrille.setBackground(new java.awt.Color(204, 204, 255));
         panneauGrille.setLayout(new java.awt.GridLayout(6, 7));
         getContentPane().add(panneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 672, 576));
 
-        panneauInfoJoueurs.setBackground(new java.awt.Color(255, 204, 204));
-        panneauInfoJoueurs.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panneauInfosJoueurs.setBackground(new java.awt.Color(255, 204, 204));
+        panneauInfosJoueurs.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nom Joueur 2 :");
-        panneauInfoJoueurs.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 80, 20));
+        panneauInfosJoueurs.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 100, 20));
 
         jLabel2.setText("Nom Joueur 1 :");
-        panneauInfoJoueurs.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        panneauInfosJoueurs.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         Nom_Joueur2.setText("jTextField1");
         Nom_Joueur2.addActionListener(new java.awt.event.ActionListener() {
@@ -85,11 +99,16 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 Nom_Joueur2ActionPerformed(evt);
             }
         });
-        panneauInfoJoueurs.add(Nom_Joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
+        panneauInfosJoueurs.add(Nom_Joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
         btm_start.setText("Démarrer Partie");
         btm_start.setActionCommand("Démarrer partie");
-        panneauInfoJoueurs.add(btm_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
+        btm_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btm_startActionPerformed(evt);
+            }
+        });
+        panneauInfosJoueurs.add(btm_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         Nom_Joueur1.setText("jTextField1");
         Nom_Joueur1.addActionListener(new java.awt.event.ActionListener() {
@@ -97,9 +116,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 Nom_Joueur1ActionPerformed(evt);
             }
         });
-        panneauInfoJoueurs.add(Nom_Joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+        panneauInfosJoueurs.add(Nom_Joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
-        getContentPane().add(panneauInfoJoueurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 310, 110));
+        getContentPane().add(panneauInfosJoueurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 330, 110));
 
         panneauInfosPartie.setBackground(new java.awt.Color(255, 204, 204));
         panneauInfosPartie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -218,6 +237,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btm_col6ActionPerformed
 
+    private void btm_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_startActionPerformed
+        panneauInfosPartie.setVisible(true);
+        panneauCreationPartie.setVisible(true);
+    }//GEN-LAST:event_btm_startActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -287,7 +311,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JScrollPane messages;
     private javax.swing.JPanel panneauCreationPartie;
     private javax.swing.JPanel panneauGrille;
-    private javax.swing.JPanel panneauInfoJoueurs;
+    private javax.swing.JPanel panneauInfosJoueurs;
     private javax.swing.JPanel panneauInfosPartie;
     // End of variables declaration//GEN-END:variables
 }
