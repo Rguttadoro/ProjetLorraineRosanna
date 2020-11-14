@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Cette classe est de type Frame, elle va nous permettre d'améliorer le jeu à 
+ * à l'aide d'une interface graphique
  */
 package superpuissance4_guttadoro_prouillet;
 
@@ -15,21 +14,23 @@ import java.util.Scanner;
 public class FenetreDeJeu extends javax.swing.JFrame {
     
     
-    Joueur[] ListeJoueurs = new Joueur[2];
+    Joueur[] ListeJoueurs = new Joueur[2]; //on lui donne les attributs nécessaires
     Jeton[] ListeJetons = new Jeton[21];
     Joueur joueurCourant;
-    Grille grillePartie = new Grille(); //on initialise la grille de jeu
+    Grille grillePartie = new Grille(); 
     Jeton jetonCourant;
     
     public FenetreDeJeu() {
-        initComponents();
-        panneauInfosPartie.setVisible(false);
+        initComponents(); // avant tout on initialise les composants
+        panneauInfosPartie.setVisible(false); 
+        //On cache les deux panneaux d'infos avant le début de la partie
         panneauCreationPartie.setVisible(false);
         
         for ( int i=5 ; i >=0 ; i-- ) {
             for ( int j=0 ; j <7 ; j++ ) {
                 CelluleGraphique cellGraph = new CelluleGraphique(grillePartie.Cellules[i][j]);
-                panneauGrille.add(cellGraph);
+                panneauGrille.add(cellGraph); 
+                // Ajout des cellules graphique dans le panneau associé : la grille
             }
         }
         
@@ -312,14 +313,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             grillePartie.placerDesintegrateur(positionsDesing[j],positionsDesing[j+1]);
             
         } 
-        grillePartie.afficherGrilleSurConsole();
-        //Affiche la grille de jeu prête pour le début de la partie.
         
-          
-        // il faut créer les 2 joueurs
         
         String nomJ1 = Nom_Joueur1.getText();
-        Joueur Joueur1 = new  Joueur(nomJ1); // on initialise les joeurs en récupérant ce que l'utilisateur a saisi 
+        Joueur Joueur1 = new  Joueur(nomJ1); 
+        // on initialise les joueurs en récupérant les noms saisis dans les cases
         ListeJoueurs[0]= Joueur1;
         
         String nomJ2 = Nom_Joueur2.getText();
@@ -327,7 +325,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         
         ListeJoueurs[1]= Joueur2;
         
-        attribuerCouleursAuxJoueurs(); //on appelle la méthode créé précédemment, les joueurs ont maintenant une couleur d'attribuée
+        attribuerCouleursAuxJoueurs(); //définition des couleurs
         
         // on l'affiche pour permettre aux joueurs de connaitre leur couleur 
         
@@ -339,22 +337,21 @@ public class FenetreDeJeu extends javax.swing.JFrame {
      
      public void  attribuerCouleursAuxJoueurs ( ) {
         // l'atribution de la couleur se fait de manière aléatoire 
-        Random rand = new Random(); // on créé une variable aléatoire 
-        boolean couleur; // on créé la variable couleur 
-        couleur = rand.nextBoolean(); // la variable couleur est donc un boolean aléatoire ( on ne sait pas vrai ou faux ) 
+        Random rand = new Random(); 
+        boolean couleur;
+        couleur = rand.nextBoolean(); 
         if ( couleur == true ) {
-            ListeJoueurs[0].couleur="jaune"; //on utilise ce qu'on a créé dans la classe Jeton
+            ListeJoueurs[0].couleur="jaune"; 
             ListeJoueurs[1].couleur="rouge"; 
             
         } else {
             ListeJoueurs[0].couleur="rouge";
             ListeJoueurs[1].couleur="jaune";
         }
-        // grace a cette boucle, le boolean ( qui n'a que 2 possibilités ) aléatoire permet de distribuer les couleurs de façon aléatoire aux joueurs 
-        // ( comme il y a que deux joueurs et deux couleurs ) 
+         
     }
     
-
+//List des composants de la frame, qui s'ajoute automatiquement
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Nom_Joueur1;
     private javax.swing.JTextField Nom_Joueur2;
