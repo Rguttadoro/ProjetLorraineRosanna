@@ -1,6 +1,6 @@
 /*
  * Cette classe est de type Frame, elle va nous permettre d'améliorer le jeu à 
- * à l'aide d'une interface graphique
+ * à l'aide d'une interface graphique.
  */
 package superpuissance4_guttadoro_prouillet;
 
@@ -66,7 +66,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        lbl_j2nom1 = new javax.swing.JLabel();
+        lbl_j2nom = new javax.swing.JLabel();
         panneauCreationPartie = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -165,8 +165,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jLabel11.setText("Joueur 1 :");
         panneauInfosPartie.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, 30));
 
-        lbl_j2nom1.setText("nomjoueur2");
-        panneauInfosPartie.add(lbl_j2nom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 70, 30));
+        lbl_j2nom.setText("nomjoueur2");
+        panneauInfosPartie.add(lbl_j2nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 70, 30));
 
         getContentPane().add(panneauInfosPartie, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 230, 310, 210));
 
@@ -245,6 +245,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneauInfosPartie.setVisible(true);
         panneauCreationPartie.setVisible(true);
         initialiserPartie();
+        panneauGrille.repaint();
+        btm_start.setEnabled(false);
     }//GEN-LAST:event_btm_startActionPerformed
 
     /**
@@ -283,11 +285,12 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }
     
      public void initialiserPartie() {
-        //initialisation de la grille
+        
         
         // nous avions vu que dans la classe grille, pour chaque nouvelle partie il fallait vider la grille :
         grillePartie.viderGrille();
         
+        //CREATION DE LA GRILLE
         //composé la grille avec des désintégrateurs et trou noir placé aléatoirement
         int [] positionsTrounoir = new int[4];
         for (int i = 0; i<positionsTrounoir.length; i++) {
@@ -314,7 +317,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             
         } 
         
-        
+        //INFOS DEBUT DU JEU:
         String nomJ1 = Nom_Joueur1.getText();
         Joueur Joueur1 = new  Joueur(nomJ1); 
         // on initialise les joueurs en récupérant les noms saisis dans les cases
@@ -327,11 +330,36 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         
         attribuerCouleursAuxJoueurs(); //définition des couleurs
         
+        // on donne des jetons aux joueurs de la couleur qu'il faut
+        Jeton Jeton1 = new Jeton(Joueur1.couleur);
+        Jeton Jeton2 = new Jeton(Joueur2.couleur);
+        
         // on l'affiche pour permettre aux joueurs de connaitre leur couleur 
+        //System.out.println(Joueur1.Nom +" a la couleur "+Joueur1.couleur);
+        //System.out.println(Joueur2.Nom +" a la couleur "+Joueur2.couleur);
         
-        System.out.println(Joueur1.Nom +" a la couleur "+Joueur1.couleur);
-        System.out.println(Joueur2.Nom +" a la couleur "+Joueur2.couleur);
+        //PANNEAU INFO JOUEUR:
+        lbl_j1nom.setText(nomJ1); //Permets l'affichage des noms sur le pannel
+        lbl_j2nom.setText(nomJ2);
+        lbl_j1couleur.setText(Joueur1.couleur); //Puis de leur couleur respective
+        lbl_j2couleur.setText(Joueur2.couleur);
+        lbl_j1desint.setText(Joueur1.nombreDesintegrateurs+""); 
+        lbl_j2desint.setText(Joueur2.nombreDesintegrateurs+"");
+        //Les guillemets vide permettent d'écrire le nbDesintégrateur qui est un int en tant que string
         
+        //PANNEAU INFO PARTIE:
+        // on détermine qui sera le premier joueur de la meme facon que pour attribuer les couleurs
+        Random random = new Random();
+        boolean premier_joueur = random.nextBoolean();
+        if ( premier_joueur==true ) {
+            joueurCourant=ListeJoueurs[0];
+        } else {
+            joueurCourant = ListeJoueurs[1];
+        }
+        lbl_jcourant.setText(joueurCourant.Nom);
+        
+        
+    
         
     }
      
@@ -381,7 +409,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_j1nom;
     private javax.swing.JLabel lbl_j2couleur;
     private javax.swing.JLabel lbl_j2desint;
-    private javax.swing.JLabel lbl_j2nom1;
+    private javax.swing.JLabel lbl_j2nom;
     private javax.swing.JLabel lbl_jcourant;
     private javax.swing.JScrollPane messages;
     private javax.swing.JPanel panneauCreationPartie;

@@ -269,7 +269,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbl_j2nom1">
+        <Component class="javax.swing.JLabel" name="lbl_j2nom">
           <Properties>
             <Property name="text" type="java.lang.String" value="nomjoueur2"/>
           </Properties>

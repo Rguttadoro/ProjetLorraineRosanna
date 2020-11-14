@@ -30,7 +30,26 @@ public class CelluleGraphique extends JButton {
     @Override // permet de dessiner la cellule graphique 
     public void paintComponent(Graphics G ) {
         super.paintComponent(G);
-        setIcon(img_vide); // on attribue l'image celluleVide.png
+        if (celluleAssociee.presenceTrouNoir()==true) {
+            setIcon(img_trou); // SI il y a un trou noir, on lui attribue la bonne image
+        }
+        else if (celluleAssociee.presenceDesintegrateur()==true) {
+            setIcon(img_desint); //De meme pour le désintégrateur
+            
+        }
+        else {
+            String couleurAssociee = celluleAssociee.lireCouleurDuJeton() ;
+            if (couleurAssociee == "rouge") { 
+                setIcon(img_rouge);
+            } 
+            if (couleurAssociee == "jaune"){
+                setIcon(img_jaune);
+            }
+            else {
+                setIcon(img_vide); 
+            }
+        }
+        
     }
     
 }
