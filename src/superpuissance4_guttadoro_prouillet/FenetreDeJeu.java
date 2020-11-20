@@ -200,15 +200,35 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         getContentPane().add(btm_col6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, -1, -1));
 
         btm_col2.setText("3");
+        btm_col2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btm_col2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btm_col2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
 
         btm_col3.setText("4");
+        btm_col3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btm_col3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btm_col3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
 
         btm_col4.setText("5");
+        btm_col4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btm_col4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btm_col4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
         btm_col1.setText("2");
+        btm_col1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btm_col1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btm_col1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
 
         btm_col0.setText("1");
@@ -220,6 +240,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         getContentPane().add(btm_col0, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
 
         btm_col5.setText("6");
+        btm_col5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btm_col5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btm_col5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, -1, -1));
 
         setBounds(0, 0, 1069, 683);
@@ -235,10 +260,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
     private void btm_col0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col0ActionPerformed
         // TODO add your handling code here:
+        JouerDansColonne(0);
+        joueurSuivant();
     }//GEN-LAST:event_btm_col0ActionPerformed
 
     private void btm_col6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col6ActionPerformed
         // TODO add your handling code here:
+        JouerDansColonne(6);
+        joueurSuivant();
     }//GEN-LAST:event_btm_col6ActionPerformed
 
     private void btm_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_startActionPerformed
@@ -249,6 +278,55 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         btm_start.setEnabled(false);
     }//GEN-LAST:event_btm_startActionPerformed
 
+    private void btm_col1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col1ActionPerformed
+        // TODO add your handling code here:
+        JouerDansColonne(1);
+        joueurSuivant();
+    }//GEN-LAST:event_btm_col1ActionPerformed
+
+    private void btm_col2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col2ActionPerformed
+        // TODO add your handling code here:
+        JouerDansColonne(2);
+        joueurSuivant();
+    }//GEN-LAST:event_btm_col2ActionPerformed
+
+    private void btm_col3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col3ActionPerformed
+        // TODO add your handling code here:
+        JouerDansColonne(3);
+        joueurSuivant();
+    }//GEN-LAST:event_btm_col3ActionPerformed
+
+    private void btm_col4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col4ActionPerformed
+        // TODO add your handling code here:
+        JouerDansColonne(4);
+        joueurSuivant();
+    }//GEN-LAST:event_btm_col4ActionPerformed
+
+    private void btm_col5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col5ActionPerformed
+        // TODO add your handling code here:
+        JouerDansColonne(5);
+        joueurSuivant();
+    }//GEN-LAST:event_btm_col5ActionPerformed
+
+    
+    public void joueurSuivant() {
+        
+        Jeton Jeton1 = new Jeton(ListeJoueurs[0].couleur);
+        Jeton Jeton2 = new Jeton(ListeJoueurs[1].couleur);
+        
+        if ( joueurCourant == ListeJoueurs[0]) {
+            joueurCourant=ListeJoueurs[1];
+            jetonCourant = Jeton2;
+            
+        } else 
+            joueurCourant=ListeJoueurs[0];
+            jetonCourant = Jeton1;
+            lbl_jcourant.setText(joueurCourant.Nom);
+        
+        
+        
+  
+    }
     /**
      * @param args the command line arguments
      */
@@ -334,6 +412,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         Jeton Jeton1 = new Jeton(Joueur1.couleur);
         Jeton Jeton2 = new Jeton(Joueur2.couleur);
         
+        if (joueurCourant == Joueur1) { 
+            //Définir le jeton a ajouté , s'il appartient au joueur 1 ou 2 pour qu'il ai la bonne couleur
+            jetonCourant = Jeton1;
+        } else {
+            jetonCourant = Jeton2;
+        }
+        
         // on l'affiche pour permettre aux joueurs de connaitre leur couleur 
         //System.out.println(Joueur1.Nom +" a la couleur "+Joueur1.couleur);
         //System.out.println(Joueur2.Nom +" a la couleur "+Joueur2.couleur);
@@ -346,6 +431,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         lbl_j1desint.setText(Joueur1.nombreDesintegrateurs+""); 
         lbl_j2desint.setText(Joueur2.nombreDesintegrateurs+"");
         //Les guillemets vide permettent d'écrire le nbDesintégrateur qui est un int en tant que string
+        
+        
         
         //PANNEAU INFO PARTIE:
         // on détermine qui sera le premier joueur de la meme facon que pour attribuer les couleurs
@@ -362,6 +449,15 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     
         
     }
+     
+     public boolean JouerDansColonne ( int indice_colonne ) {
+          
+        panneauGrille.repaint();
+        if (grillePartie.ajouterJetondansColonne(jetonCourant , indice_colonne ) == true ) return true; 
+        else  return false;
+      
+    }
+     
      
      public void  attribuerCouleursAuxJoueurs ( ) {
         // l'atribution de la couleur se fait de manière aléatoire 

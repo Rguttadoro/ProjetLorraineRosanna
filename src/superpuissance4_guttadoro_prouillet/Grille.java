@@ -27,9 +27,9 @@ public class Grille {
         // au fait que la case ou arrive le jeton est pleine ou non
         for ( int i =0 ; i<=5 ; i++ ) { 
             // On parcours la colonne d'en haut jusqu'en bas
-            if ( Cellules[i][C-1].jetonCourant==null) {
+            if ( Cellules[i][C].jetonCourant==null) {
                 //Si cette première cellule est vide, on lui affecte le jeton joué
-                Cellules[i][C-1].affecterJeton(Valjeton); 
+                Cellules[i][C].affecterJeton(Valjeton); 
                 return true; //L'action a était faite on renvoie vraie et on sort de la boucle
             } else {
                 pleine= false; //Si cette cellule n'était pas vide, on reste dans la boucle for et décréménte i
