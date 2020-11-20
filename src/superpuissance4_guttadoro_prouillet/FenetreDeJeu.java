@@ -72,7 +72,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         lbl_jcourant = new javax.swing.JLabel();
         messages = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textemessage = new javax.swing.JTextArea();
         btm_col6 = new javax.swing.JButton();
         btm_col2 = new javax.swing.JButton();
         btm_col3 = new javax.swing.JButton();
@@ -97,13 +97,12 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jLabel2.setText("Nom Joueur 1 :");
         panneauInfosJoueurs.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        Nom_Joueur2.setText("jTextField1");
         Nom_Joueur2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Nom_Joueur2ActionPerformed(evt);
             }
         });
-        panneauInfosJoueurs.add(Nom_Joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
+        panneauInfosJoueurs.add(Nom_Joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 70, -1));
 
         btm_start.setText("Démarrer Partie");
         btm_start.setActionCommand("Démarrer partie");
@@ -114,13 +113,12 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         });
         panneauInfosJoueurs.add(btm_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
-        Nom_Joueur1.setText("jTextField1");
         Nom_Joueur1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Nom_Joueur1ActionPerformed(evt);
             }
         });
-        panneauInfosJoueurs.add(Nom_Joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+        panneauInfosJoueurs.add(Nom_Joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 70, -1));
 
         getContentPane().add(panneauInfosJoueurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 330, 110));
 
@@ -131,6 +129,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneauInfosPartie.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 100, 30));
 
         lbl_j1desint.setText("nbdesintjoueur1");
+        lbl_j1desint.setToolTipText("");
         panneauInfosPartie.add(lbl_j1desint, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 100, 30));
 
         jLabel6.setText("Couleur :");
@@ -183,9 +182,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         lbl_jcourant.setText("nomjoueur");
         panneauCreationPartie.add(lbl_jcourant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 70, 30));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        messages.setViewportView(jTextArea1);
+        textemessage.setColumns(20);
+        textemessage.setRows(5);
+        messages.setViewportView(textemessage);
 
         panneauCreationPartie.add(messages, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 290, 90));
 
@@ -457,7 +456,19 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         grillePartie.ajouterJetondansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetons_restants-1] , indice_colonne );
         
         panneauGrille.repaint();
-        grillePartie.afficherGrilleSurConsole();
+        lbl_j1desint.setText(ListeJoueurs[0].nombreDesintegrateurs+"");
+        lbl_j2desint.setText(ListeJoueurs[1].nombreDesintegrateurs+"");
+        
+        boolean vic_J1 = grillePartie.etreGagnantePourJoueur(ListeJoueurs[0]);
+        boolean vic_J2 = grillePartie.etreGagnantePourJoueur(ListeJoueurs[1]);
+        
+        if ( vic_J1 == true ){
+            textemessage.setText("Victoire de "+ListeJoueurs[0].Nom);
+        }
+        if ( vic_J2 == true )  {
+            textemessage.setText("Victoire de "+ListeJoueurs[1].Nom);
+        }
+        
         return true;
       
     }
@@ -503,7 +514,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbl_j1couleur;
     private javax.swing.JLabel lbl_j1desint;
     private javax.swing.JLabel lbl_j1nom;
@@ -516,5 +526,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JPanel panneauGrille;
     private javax.swing.JPanel panneauInfosJoueurs;
     private javax.swing.JPanel panneauInfosPartie;
+    private javax.swing.JTextArea textemessage;
     // End of variables declaration//GEN-END:variables
 }
