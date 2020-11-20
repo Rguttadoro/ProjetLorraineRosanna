@@ -26,7 +26,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         //On cache les deux panneaux d'infos avant le début de la partie
         panneauCreationPartie.setVisible(false);
         
-        for ( int i=5 ; i >=0 ; i-- ) {
+        for ( int i=0 ; i <=5; i++ ) {
             for ( int j=0 ; j <7 ; j++ ) {
                 CelluleGraphique cellGraph = new CelluleGraphique(grillePartie.Cellules[i][j]);
                 panneauGrille.add(cellGraph); 
@@ -261,12 +261,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private void btm_col0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col0ActionPerformed
         // TODO add your handling code here:
         JouerDansColonne(0);
+        if (grillePartie.colonneRemplie(0)== true) btm_col0.setEnabled(false);
         joueurSuivant();
     }//GEN-LAST:event_btm_col0ActionPerformed
 
     private void btm_col6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col6ActionPerformed
         // TODO add your handling code here:
         JouerDansColonne(6);
+        if (grillePartie.colonneRemplie(6)== true) btm_col6.setEnabled(false);
         joueurSuivant();
     }//GEN-LAST:event_btm_col6ActionPerformed
 
@@ -281,48 +283,49 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private void btm_col1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col1ActionPerformed
         // TODO add your handling code here:
         JouerDansColonne(1);
+        if (grillePartie.colonneRemplie(1)== true) btm_col1.setEnabled(false);
         joueurSuivant();
     }//GEN-LAST:event_btm_col1ActionPerformed
 
     private void btm_col2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col2ActionPerformed
         // TODO add your handling code here:
         JouerDansColonne(2);
+        if (grillePartie.colonneRemplie(2)== true) btm_col2.setEnabled(false);
         joueurSuivant();
     }//GEN-LAST:event_btm_col2ActionPerformed
 
     private void btm_col3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col3ActionPerformed
         // TODO add your handling code here:
         JouerDansColonne(3);
+        if (grillePartie.colonneRemplie(3)== true) btm_col3.setEnabled(false);
         joueurSuivant();
     }//GEN-LAST:event_btm_col3ActionPerformed
 
     private void btm_col4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col4ActionPerformed
         // TODO add your handling code here:
         JouerDansColonne(4);
+        if (grillePartie.colonneRemplie(4)== true) btm_col4.setEnabled(false);
         joueurSuivant();
     }//GEN-LAST:event_btm_col4ActionPerformed
 
     private void btm_col5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_col5ActionPerformed
         // TODO add your handling code here:
         JouerDansColonne(5);
+        if (grillePartie.colonneRemplie(5)== true) btm_col5.setEnabled(false);
         joueurSuivant();
     }//GEN-LAST:event_btm_col5ActionPerformed
 
     
     public void joueurSuivant() {
         
-        Jeton Jeton1 = new Jeton(ListeJoueurs[0].couleur);
-        Jeton Jeton2 = new Jeton(ListeJoueurs[1].couleur);
+
         
         if ( joueurCourant == ListeJoueurs[0]) {
             joueurCourant=ListeJoueurs[1];
-            jetonCourant = Jeton2;
             
         } else {
             joueurCourant=ListeJoueurs[0];
-            jetonCourant = Jeton1;
-            
-        
+          
         }
         lbl_jcourant.setText(joueurCourant.Nom);
   
@@ -366,7 +369,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         
         
         // nous avions vu que dans la classe grille, pour chaque nouvelle partie il fallait vider la grille :
-        grillePartie.viderGrille();
+        
         
         //CREATION DE LA GRILLE
         //composé la grille avec des désintégrateurs et trou noir placé aléatoirement
@@ -409,14 +412,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         attribuerCouleursAuxJoueurs(); //définition des couleurs
         
         // on donne des jetons aux joueurs de la couleur qu'il faut
-        Jeton Jeton1 = new Jeton(Joueur1.couleur);
-        Jeton Jeton2 = new Jeton(Joueur2.couleur);
-        
-        if (joueurCourant == Joueur1) { 
-            //Définir le jeton a ajouté , s'il appartient au joueur 1 ou 2 pour qu'il ai la bonne couleur
-            jetonCourant = Jeton1;
-        } else {
-            jetonCourant = Jeton2;
+        for ( int i=0 ; i<=20 ; i++) {
+            Jeton Jeton1 = new Jeton(Joueur1.couleur);
+            Jeton Jeton2 = new Jeton(Joueur2.couleur);
+            Joueur1.ajouterJeton(Jeton1);
+            Joueur2.ajouterJeton(Jeton2);
         }
         
         // on l'affiche pour permettre aux joueurs de connaitre leur couleur 
@@ -452,9 +452,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
      
      public boolean JouerDansColonne ( int indice_colonne ) {
           
+        
+        
+        grillePartie.ajouterJetondansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetons_restants-1] , indice_colonne );
+        
         panneauGrille.repaint();
-        if (grillePartie.ajouterJetondansColonne(jetonCourant , indice_colonne ) == true ) return true; 
-        else  return false;
+        grillePartie.afficherGrilleSurConsole();
+        return true;
       
     }
      

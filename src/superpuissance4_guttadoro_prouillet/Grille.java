@@ -25,7 +25,7 @@ public class Grille {
         // C-1 désigne la colonne choisie par le joueur 
         boolean pleine = false; // Initialise la valeur pleine qui correspond 
         // au fait que la case ou arrive le jeton est pleine ou non
-        for ( int i =0 ; i<=5 ; i++ ) { 
+        for ( int i =5 ; i>=0 ; i--) { 
             // On parcours la colonne d'en haut jusqu'en bas
             if ( Cellules[i][C].jetonCourant==null) {
                 //Si cette première cellule est vide, on lui affecte le jeton joué
@@ -198,17 +198,17 @@ public class Grille {
 
     
     public boolean colonneRemplie(int C) { 
-        boolean remplie = false ; 
+        
         //Choix d'une colonne à vérifier si remplie
-        for (int i =0; i<=5;i++ ) { //On parcours donc chaque ligne de la colonne
-            if (Cellules[i][C] == null) { //Des qu'une case est vide elle n'est forcément pas remplie
-               
-                return false;
-            } else {
-                remplie=true; //i arrive à 5, la colonne est bien remplie
-                return remplie;
-            }
-        } return true;
+        
+        if (Cellules[0][C].jetonCourant == null) { 
+            
+            return false;
+            
+        } else {
+           
+            return true;
+        }
     }
     
     public boolean supprimerJeton ( int y , int x  ) { //y pour le numéro de la colonne et x numéro de  la ligne

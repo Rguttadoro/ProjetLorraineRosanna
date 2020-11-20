@@ -12,20 +12,17 @@ public class Joueur { //Définition des attributs de joueur
     String Nom;
     String couleur;
     Jeton[] ListeJetons; //Ce joueur possèdera un certains nombre de jeton
-    Jeton jetonJoueur;
+  
     int nombreDesintegrateurs;
     int nombreJetons_restants;
     
     public Joueur ( String unNom ) { //Constructeur de joueur
         Nom = unNom;
-        Jeton ListeJetons[]= new Jeton[21]; //Permets de stocker 21 Jetons
-        nombreJetons_restants= 21; //Initialisé donc à 21 en début de partie
+        ListeJetons= new Jeton[21]; //Permets de stocker 21 Jetons
+        nombreJetons_restants= 0; //Initialisé donc à 21 en début de partie
         nombreDesintegrateurs=0;
         
-        for (int i = 0; i<ListeJetons.length; i++) {
-            ListeJetons[i]= jetonJoueur ;
-        }
-         
+       
 }
     public void affecterCouleur(String ValCouleur) {
         couleur=ValCouleur; //Valcouleur est saisie par l'utilisateur
@@ -41,6 +38,7 @@ public class Joueur { //Définition des attributs de joueur
             //On renvoie donc vrai et l'ajoute dans la liste à la place 
             //correspondant au nombre restant.
            System.out.println("Nombre de jetons égal à "+nombreJetons_restants);
+           nombreJetons_restants++;
            return true;
         }
         else {
