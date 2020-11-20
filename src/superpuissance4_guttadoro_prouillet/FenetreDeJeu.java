@@ -318,13 +318,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             joueurCourant=ListeJoueurs[1];
             jetonCourant = Jeton2;
             
-        } else 
+        } else {
             joueurCourant=ListeJoueurs[0];
             jetonCourant = Jeton1;
-            lbl_jcourant.setText(joueurCourant.Nom);
+            
         
-        
-        
+        }
+        lbl_jcourant.setText(joueurCourant.Nom);
   
     }
     /**

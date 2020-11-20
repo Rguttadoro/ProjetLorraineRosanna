@@ -42,7 +42,7 @@ public class CelluleGraphique extends JButton {
             if (couleurAssociee == "rouge") { 
                 setIcon(img_rouge);
             } 
-            if (couleurAssociee == "jaune"){
+            else if (couleurAssociee == "jaune"){
                 setIcon(img_jaune);
             }
             else {
