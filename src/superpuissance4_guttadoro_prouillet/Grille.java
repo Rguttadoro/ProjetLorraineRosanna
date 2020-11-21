@@ -25,13 +25,25 @@ public class Grille {
         // C-1 désigne la colonne choisie par le joueur 
         boolean pleine = false; // Initialise la valeur pleine qui correspond 
         // au fait que la case ou arrive le jeton est pleine ou non
-        for ( int i =5 ; i>=0 ; i--) { 
+        for ( int i = 5 ; i>=0 ; i-- ) { 
+            
             // On parcours la colonne d'en haut jusqu'en bas
             if ( Cellules[i][C].jetonCourant==null) {
                 //Si cette première cellule est vide, on lui affecte le jeton joué
                 Cellules[i][C].affecterJeton(Valjeton); 
                 return true; //L'action a était faite on renvoie vraie et on sort de la boucle
-            } else {
+            } else if ( Cellules[i][C].presenceTrouNoir() == true) {
+                Cellules[i][C].trouNoir = false;
+                Cellules[i][C].jetonCourant = null;
+                return true;
+                
+            } else if ( Cellules[i][C].presenceDesintegrateur() == true) {
+                Cellules[i][C].desintegrateur = false;
+                Cellules[i][C].affecterJeton(Valjeton); 
+                //joueurCourant.obtenirDesintegrateur();
+                return true;
+            }
+            else {
                 pleine= false; //Si cette cellule n'était pas vide, on reste dans la boucle for et décréménte i
             } //Renverra faux à la fin si la colonne est entièrement pleine
         }
