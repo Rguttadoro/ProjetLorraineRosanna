@@ -380,8 +380,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             //System.out.print(positionsTrounoir[i]); 
             }
         
-        for (int j = 0; j<2; j++) { //crée 3 différents Trous noirs
-            grillePartie.placerTrouNoir(positionsTrounoir[j],positionsTrounoir[j+1]);
+        for (int j = 0; j<2; j++) { //crée 2 différents Trous noirs
+            grillePartie.placerTrouNoir(positionsTrounoir[j],positionsTrounoir[j+2]);
             
         } 
         int [] positionsDesing = new int[4];
@@ -392,8 +392,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             //System.out.print(positionsDesing[i]); 
             }
         
-        for (int j = 0; j<2; j++) { //crée 3 différents désintégrateurs sur la grille
-            grillePartie.placerDesintegrateur(positionsDesing[j],positionsDesing[j+1]);
+        for (int j = 0; j<2; j++) { //crée 2 différents désintégrateurs sur la grille
+            grillePartie.placerDesintegrateur(positionsDesing[j],positionsDesing[j+2]);
             
         } 
         
@@ -443,8 +443,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             joueurCourant = ListeJoueurs[1];
         }
         lbl_jcourant.setText(joueurCourant.Nom);
-        
-        
+        textemessage.setText("\nC'est le tour de "+ joueurCourant.Nom +"\n");
     
         
     }
@@ -463,10 +462,27 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         boolean vic_J2 = grillePartie.etreGagnantePourJoueur(ListeJoueurs[1]);
         
         if ( vic_J1 == true ){
-            textemessage.setText("Victoire de "+ListeJoueurs[0].Nom);
+            textemessage.setText("Victoire de "+ListeJoueurs[0].Nom+"\n"+"Fin de la partie");
+            btm_col0.setEnabled(false);
+            btm_col1.setEnabled(false);
+            btm_col2.setEnabled(false); // Désactive les boutons de jeu 
+            btm_col3.setEnabled(false);
+            btm_col4.setEnabled(false);
+            btm_col5.setEnabled(false);
+            btm_col6.setEnabled(false);
+            grillePartie.viderGrille(); //Et on vide la grille pour une nouvelle partie
+            
         }
         if ( vic_J2 == true )  {
-            textemessage.setText("Victoire de "+ListeJoueurs[1].Nom);
+            textemessage.setText("Victoire de "+ListeJoueurs[1].Nom+"\n"+"Fin de la partie");
+            btm_col0.setEnabled(false);
+            btm_col1.setEnabled(false);
+            btm_col2.setEnabled(false);
+            btm_col3.setEnabled(false);
+            btm_col4.setEnabled(false);
+            btm_col5.setEnabled(false);
+            btm_col6.setEnabled(false);
+            grillePartie.viderGrille();
         }
         
         return true;

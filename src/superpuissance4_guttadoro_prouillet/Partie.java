@@ -1,4 +1,4 @@
-/*
+ /*
  * Guttadoro Rosanna Lorraine Prouillet
  * Classe Partie
  * Statut : terminée version 1.1

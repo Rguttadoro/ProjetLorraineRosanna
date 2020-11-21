@@ -37,7 +37,7 @@ public class Joueur { //Définition des attributs de joueur
             //Le jeton choisi peut etre ajouté a la liste des jetons du joueur
             //On renvoie donc vrai et l'ajoute dans la liste à la place 
             //correspondant au nombre restant.
-           System.out.println("Nombre de jetons égal à "+nombreJetons_restants);
+           //System.out.println("Nombre de jetons égal à "+nombreJetons_restants);
            nombreJetons_restants++;
            return true;
         }

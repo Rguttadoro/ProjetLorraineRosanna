@@ -41,7 +41,7 @@ public class Cellule { //Attributs de la classe cellule
             jetonCourant=null; // On la rends vide et retourne vrai
             return true;
         } else {
-            System.out.println(" pas de jeton présent "); 
+            //System.out.println(" pas de jeton présent "); 
             // Si elle etait vide, aucune action, renvoie faux
             return false;
         }
@@ -104,7 +104,8 @@ public class Cellule { //Attributs de la classe cellule
     public boolean recupererDesintegrateur () {
         //On tombe sur un désintégrateur et désire le récupérer
         if ( desintegrateur == true ) { //S'il y en a un sur la case, booléen vrai
-            desintegrateur=false;  //On l'enlève et le booléen devient faux
+            desintegrateur=false; 
+            //On l'enlève et le booléen devient faux
             return true; // Renvoie vrai, il a bien était retiré
         } else {
             return false; //Aucun désintégrateur, renvoie faux.
