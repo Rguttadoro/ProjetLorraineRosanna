@@ -144,9 +144,11 @@ public class Grille {
                     gagnante = true;
                     //System.out.println("Gagné"); //Test vérifiant le fonctionnement
                     return gagnante;
-                }
-            } return false;
-        } //Analyse des lignes :
+                } 
+            } 
+        }
+        //Analyse des lignes :
+        
         for (int i = 0; i<=5 ; i++) { //On étudie chaque ligne
             int sommepions=0;
             for (int j= 0; j<=6; j++) { // Et donc on décale d'une colonne a chaque fois
@@ -162,27 +164,13 @@ public class Grille {
                 }
                     
                 
-            } return false;
+            }
         }
         //Analyse des diagonales:
-        for (int i = 0; i<=6 ; i++) { // on fait le test pour les diagonles montantes 
+        /*for (int i = 0; i<=6 ; i++) { // on fait le test pour les diagonles montantes 
             int sommepions=0;
             for (int j= 5; j>0; j--) {
-                if (Cellules[j][i].lireCouleurDuJeton()== Cellules[j-1][i+1].lireCouleurDuJeton()) {
-                    sommepions++;
-                } else {
-                    sommepions=0;
-                }
-                if (sommepions==4) {
-                    gagnante = true;
-                    return gagnante;
-                }
-            }return false;
-        }
-        for (int i = 0; i<=6 ; i++) { // on fait le test pour les diagonles descendantes 
-            int sommepions=0;
-            for (int j= 0; j<=5; j++) {
-                if (Cellules[j][i].jetonCourant.lireCouleur()== Cellules[j+1][i+1].jetonCourant.lireCouleur()) {
+                if (Cellules[j][i].lireCouleurDuJeton()==couleurJoueur && Cellules[j-1][i+1].lireCouleurDuJeton()==couleurJoueur) {
                     sommepions++;
                 } else {
                     sommepions=0;
@@ -192,8 +180,22 @@ public class Grille {
                     return gagnante;
                 }
             }
-        } return false;
-        
+        }
+        for (int i = 0; i<=6 ; i++) { // on fait le test pour les diagonles descendantes 
+            int sommepions=0;
+            for (int j= 0; j<=5; j++) {
+                if (Cellules[j][i].lireCouleurDuJeton()== couleurJoueur && Cellules[j+1][i+1].lireCouleurDuJeton()==couleurJoueur) {
+                    sommepions++;
+                } else {
+                    sommepions=0;
+                }
+                if (sommepions==4) {
+                    gagnante = true;
+                    return gagnante;
+                }
+            }
+        }*/     
+    return false;
     }
 
     
